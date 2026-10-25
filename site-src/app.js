@@ -59,7 +59,7 @@
       markers[w.id] = m;
     });
 
-    function dirs(w, mode) { return "https://www.google.com/maps/dir/?api=1&destination=" + w.lat + "," + w.lng + "&travelmode=" + mode; }
+    function dirs(w) { return "https://www.google.com/maps/dir/?api=1&destination=" + w.lat + "," + w.lng; }
     function popup(w) {
       var d = mk("div", "pop");
       d.appendChild(mk("h3", null, w.name));
@@ -71,9 +71,7 @@
       bits.push(w.verified ? "Credit verified" : "Credit not yet verified");
       d.appendChild(mk("p", "small", bits.join(" · ")));
       var go = mk("p", "go");
-      [["Walk", "walking"], ["Bike", "bicycling"]].forEach(function (x) {
-        var a = mk("a", null, x[0] + " there"); a.href = dirs(w, x[1]); a.target = "_blank"; a.rel = "noopener"; go.appendChild(a);
-      });
+      var da = mk("a", null, "Get directions"); da.href = dirs(w); da.target = "_blank"; da.rel = "noopener"; go.appendChild(da);
       d.appendChild(go);
       var f = mk("p", "small");
       var r = mk("a", null, "Report a correction");
