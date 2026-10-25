@@ -1,6 +1,6 @@
 # Downtown - South & Waterfront
 
-[← Catalogue](README.md) · 5 works
+[← Catalogue](README.md) · 10 works
 
 ## Ireland Park / Immigration Axis
 
@@ -12,6 +12,7 @@
 - **Accessibility:** 24/7
 - **Artist / attribution:** Rowan Gillespie
 - **Verified:** no
+- **Coordinates:** 43.63478, -79.39572
 
 A commemorative sculpture in Ireland Park referencing migration and arrival narratives.
 
@@ -25,6 +26,7 @@ A commemorative sculpture in Ireland Park referencing migration and arrival narr
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
 - **Verified:** no
+- **Coordinates:** 43.64273, -79.3883
 
 A figurative installation near Rogers Centre celebrating spectatorship.
 
@@ -38,6 +40,7 @@ A figurative installation near Rogers Centre celebrating spectatorship.
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
 - **Verified:** no
+- **Coordinates:** 43.63671, -79.4001
 
 A commemorative installation referencing early Canadian military history.
 
@@ -64,5 +67,68 @@ A memorial sculpture at Exhibition Place referencing wartime trauma.
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
 - **Verified:** no
+- **Coordinates:** 43.64019, -79.3767
 
 Memorial to Jack Layton at the Ferry Terminal.
+
+## 
+
+### Campsite Founding – Simcoe Memorial
+
+- **ID:** TPAM-092
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:** Simcoe Place — 200 Front Street West, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** Brad Golden and Lynne Eichenberg
+- **Verified:** no
+- **Coordinates:** 43.64467, -79.3864
+
+Public artwork (Stone, Bronze, Mixed Metal, Water), 1994.
+
+### Chinese Railroad Workers Memorial
+
+- **ID:** TPAM-093
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:**  — Blue Jays Way and Navy Wharf Court, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** Eldon Garnet and Francis Lebouthillier
+- **Verified:** no
+- **Coordinates:** 43.64164, -79.3919
+
+Public artwork (bronze, wood, hemp rope), 1989.
+
+### Injured Workers Monument
+
+- **ID:** TPAM-094
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:** Simcoe Park — Front Street West, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** John Scott, Derek Lo and Lana Winkler
+- **Verified:** no
+- **Coordinates:** 43.64499, -79.3859
+
+Public artwork (granite, bronze), 2001.
+
+### Social Theatre I - VI
+
+- **ID:** TPAM-095
+- **Layer:** Layer 1 – Outdoor Sculptures
+- **Location:**  — Spadina Avenue and Queen Street West; King Street West and Front Street, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** Randy / Berenicci (as listed by the City)
+- **Verified:** no
+- **Coordinates:** 43.64395, -79.3888
+
+Public artwork (stainless steel), 1997.
+
+### War of 1812 Memorial
+
+- **ID:** TPAM-096
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:**  — Portland Street and Niagara Street, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** Walter Seymour Allward
+- **Verified:** no
+- **Coordinates:** 43.64246, -79.3992
+
+Public artwork (bronze, masonry), 1906.

@@ -1,6 +1,6 @@
 # Downtown - Business Core
 
-[← Catalogue](README.md) · 14 works
+[← Catalogue](README.md) · 15 works
 
 ## Union Station / Front Spine
 
@@ -12,6 +12,7 @@
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
 - **Verified:** no
+- **Coordinates:** 43.65271, -79.38691
 
 A monumental installation symbolizing legal authority outside the Ontario Courts.
 
@@ -23,6 +24,7 @@ A monumental installation symbolizing legal authority outside the Ontario Courts
 - **Accessibility:** 24/7
 - **Artist / attribution:** Francesco Perilli
 - **Verified:** no
+- **Coordinates:** 43.64541, -79.3811
 
 A public memorial celebrating immigration and cultural diversity at Union Station.
 
@@ -36,6 +38,7 @@ A public memorial celebrating immigration and cultural diversity at Union Statio
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
 - **Verified:** no
+- **Coordinates:** 43.64959, -79.3832
 
 A contemporary abstract sculpture located in a corporate courtyard environment.
 
@@ -47,6 +50,7 @@ A contemporary abstract sculpture located in a corporate courtyard environment.
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
 - **Verified:** no
+- **Coordinates:** 43.64740, -79.38220
 
 A sculptural installation in the TD Centre plaza emphasizing abstraction and spatial geometry.
 
@@ -82,6 +86,7 @@ Integrated architectural ornamentation on the opera house façade.
 - **Accessibility:** 24/7
 - **Artist / attribution:** Jonathan Borofsky (commonly attributed in public art records)
 - **Verified:** no
+- **Coordinates:** 43.64788, -79.37906
 
 A figurative sculptural work depicting an elephant family group in Commerce Court plaza.
 
@@ -106,6 +111,7 @@ A sculptural fountain-like installation referencing financial liquidity in Comme
 - **Accessibility:** 24/7
 - **Artist / attribution:** Susan Schelle
 - **Verified:** no
+- **Coordinates:** 43.64769, -79.383
 
 A whale-inspired sculptural form in the King Street public realm.
 
@@ -117,6 +123,7 @@ A whale-inspired sculptural form in the King Street public realm.
 - **Accessibility:** 24/7
 - **Artist / attribution:** collective installation (Maple Leaf Sports & Entertainment commissioning)
 - **Verified:** no
+- **Coordinates:** 43.64288, -79.37977
 
 A wall of commemorative hockey figures at Scotiabank Arena.
 
@@ -130,6 +137,7 @@ A wall of commemorative hockey figures at Scotiabank Arena.
 - **Accessibility:** 24/7
 - **Artist / attribution:** —
 - **Verified:** no
+- **Coordinates:** 43.64446, -79.3762
 
 ## Brookfield / TD Courtyard Network
 
@@ -163,5 +171,20 @@ A commemorative sports monument celebrating Canadian hockey heritage.
 - **Accessibility:** 24/7
 - **Artist / attribution:** James McElhinney / conceptual attribution varies
 - **Verified:** no
+- **Coordinates:** 43.64681, -79.37716
 
 A sports-themed sculptural installation in Brookfield Place courtyard.
+
+## 
+
+### The Monument to Construction Workers
+
+- **ID:** TPAM-044
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:**  — 14 Temperance Street, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** Margaret Priest
+- **Verified:** no
+- **Coordinates:** 43.65111, -79.3801
+
+Public artwork (Mixed Media: Aggregates of Bronze Pipe, Granite, Brickwork, Etched Glass), 1993.

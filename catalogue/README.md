@@ -4,10 +4,10 @@ Generated from `data/artworks.csv`. Do not edit these pages by hand; edit the CS
 
 | Zone | Works |
 |---|---|
-| [Downtown - Business Core](downtown-business-core.md) | 14 |
-| [Downtown - Midtown](downtown-midtown.md) | 14 |
-| [Downtown - South & Waterfront](downtown-south-waterfront.md) | 5 |
-| [Downtown - East](downtown-east.md) | 6 |
-| [Downtown - West](downtown-west.md) | 4 |
+| [Downtown - Business Core](downtown-business-core.md) | 15 |
+| [Downtown - Midtown](downtown-midtown.md) | 28 |
+| [Downtown - South & Waterfront](downtown-south-waterfront.md) | 10 |
+| [Downtown - East](downtown-east.md) | 22 |
+| [Downtown - West](downtown-west.md) | 21 |
 
-**Total: 43 works.**
+**Total: 96 works.**
