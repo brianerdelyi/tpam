@@ -102,10 +102,30 @@
       it.li.classList.add("sel");
       var m = markers[id];
       if (m) {
-        if (fromList) { map.setView(m.getLatLng(), Math.max(map.getZoom(), 16)); m.openPopup(); }
+        if (fromList) {
+          if (isPhone()) { showView("map"); }
+          map.setView(m.getLatLng(), Math.max(map.getZoom(), 16)); m.openPopup();
+        }
       } else if (fromList) { /* no coordinates yet */ }
       if (!fromList) it.li.scrollIntoView({ block: "nearest", behavior: "smooth" });
     }
+
+    // phone: one full-screen view at a time (map or list)
+    var phoneQuery = window.matchMedia("(max-width: 760px)");
+    function isPhone() { return phoneQuery.matches; }
+    var view = "map";
+    function showView(v) {
+      view = v;
+      document.body.className = "view-" + v;
+      $("viewBtn").textContent = v === "map" ? "List" : "Map";
+      if (v === "map") { map.invalidateSize(); }
+    }
+    $("viewBtn").addEventListener("click", function () {
+      var toMap = view !== "map";
+      showView(view === "map" ? "list" : "map");
+      if (toMap) { setFilter(filter); }
+    });
+    showView("map");
 
     // filter chips (one set of controls)
     var bar = $("zonelist");
