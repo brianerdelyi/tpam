@@ -1,5 +1,8 @@
 (function () {
   "use strict";
+  var navToggle = document.getElementById("navToggle"), navLinks = document.getElementById("navLinks");
+  navToggle.addEventListener("click", function (e) { var o = navLinks.classList.toggle("open"); navToggle.setAttribute("aria-expanded", String(o)); e.stopPropagation(); });
+  document.addEventListener("click", function (e) { if (!navLinks.contains(e.target)) { navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded", "false"); } });
   var REPO = "brianerdelyi/tpam";
   var $ = function (id) { return document.getElementById(id); };
   function mk(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }

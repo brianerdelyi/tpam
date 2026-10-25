@@ -9,15 +9,20 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div>
-    <h1>Toronto Public Art Map</h1>
-    <p id="sub">Outdoor public art in downtown Toronto, by foot or bike.</p>
-  </div>
-  <nav>
-    <a href="https://github.com/brianerdelyi/tpam" rel="noopener">Source &amp; data</a>
-    <a href="https://github.com/brianerdelyi/tpam/issues/new?template=correction.md" rel="noopener">Report a correction</a>
-    <a href="mailto:tpam@cyclingmatters.ca?subject=Toronto%20Public%20Art%20Map%20feedback">Email feedback</a>
+<header class="site">
+  <nav class="navbar" aria-label="Site">
+    <div class="brand">
+      <h1>Toronto Public Art Map</h1>
+      <p id="sub">Outdoor public art in downtown Toronto, by foot or bike.</p>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="https://github.com/brianerdelyi/tpam" rel="noopener">Source &amp; data</a>
+      <a href="https://github.com/brianerdelyi/tpam/issues/new?template=correction.md" rel="noopener">Report a correction</a>
+      <a href="mailto:tpam@cyclingmatters.ca?subject=Toronto%20Public%20Art%20Map%20feedback">Email feedback</a>
+      <a class="mobile-only" href="https://cyclingmatters.ca" rel="noopener">Cycling Matters</a>
+    </div>
+    <a class="nav-cta" href="https://cyclingmatters.ca" rel="noopener">Cycling Matters</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </nav>
 </header>
 <p id="notice" role="note">Work in progress: if you see errors or want to update details please send feedback.</p>
