@@ -13,8 +13,6 @@
     .catch(function (e) { $("works").appendChild(mk("li", "empty", "Could not load the data: " + e.message)); });
 
   var PROVIDERS = [
-    { url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", opt: { subdomains: "abcd", maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>' } },
     { url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png", opt: { maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' } },
     { url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", opt: { maxZoom: 19,
