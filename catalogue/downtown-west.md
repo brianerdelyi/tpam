@@ -2,7 +2,7 @@
 
 [← Catalogue](README.md) · 4 works
 
-## University Ave & Osgoode
+## University Avenue Institutional Spine
 
 ### Adam Beck Memorial
 
@@ -26,6 +26,8 @@ Memorial honoring hydroelectric pioneer Sir Adam Beck.
 
 A linear sculptural seating installation along University Avenue.
 
+## Osgoode / Civic Justice Precinct
+
 ### Equal Before the Law
 
 - **ID:** TPAM-042
@@ -37,7 +39,7 @@ A linear sculptural seating installation along University Avenue.
 
 A sculptural installation outside Osgoode Hall referencing justice.
 
-## Art Gallery of Ontario
+## AGO / Cultural Corridor
 
 ### Couch Monster
 

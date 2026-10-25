@@ -51,19 +51,32 @@ Where zones overlap, Midtown takes precedence: between Queen and Bloor, and betw
 
 | Zone | Sub-zone | Definition |
 |---|---|---|
-| Business Core | Financial District (Bay–Yonge–Wellington) | Skyscraper and plaza network: TD Centre, Brookfield Place, Commerce Court, Richmond-Adelaide |
-| Business Core | Union Station & Front St | Transit and civic arrival corridor, with the Yonge and Front edge |
-| Business Core | King Street | Entertainment and public-realm sculpture edge |
-| Midtown | Nathan Phillips Square | Civic plaza and major sculpture field, including the Spirit Garden |
-| Midtown | Queen’s Park & St. Michael’s | Legislative, academic and campus statuary |
-| Midtown | Bloor Corridor | Cultural and institutional linear corridor; a region with a flexible extent |
-| South & Waterfront | Harbourfront & Queens Quay | Waterfront promenade, Ireland Park and the ferry terminal |
-| South & Waterfront | Rogers Centre & Blue Jays Way | Stadium-adjacent civic art |
-| South & Waterfront | Exhibition Place | Large-scale civic event and memorial grounds |
-| East | St. Lawrence & Old Town | Historic market, St. James and the early Toronto street grid |
-| East | Queen East & the Don | Queen East to the Don River edge |
-| West | University Ave & Osgoode | Courts, hospitals and civic administration corridor |
-| West | Art Gallery of Ontario | Museum and cultural institution |
+| Business Core | Financial Core (Bay–Yonge–Wellington) | Core skyscraper + plaza network (TD, Brookfield, Commerce Court) |
+| Business Core | Union Station / Front Spine | Transit + civic arrival corridor |
+| Business Core | King Street Corridor | Entertainment + public realm sculpture edge |
+| Business Core | Yonge Street Edge | Vertical corridor linking south/north civic fabric |
+| Business Core | Brookfield / TD Courtyard Network | Linked interior/exterior corporate plaza system |
+| Business Core | Commerce Court / Bay Complex | Dense banking plaza cluster identity |
+| Midtown | Nathan Phillips Square | Civic plaza + major sculpture field |
+| Midtown | Spirit Garden | Indigenous commemorative installation system |
+| Midtown | Queen’s Park / UofT | Legislative + academic statuary field |
+| Midtown | Bloor Corridor | Cultural + institutional linear corridor; a region with a flexible extent |
+| Midtown | St. Michael’s / St. Mary Edge | Campus-adjacent institutional micro-zone |
+| South & Waterfront | Harbourfront / Queens Quay | Waterfront promenade + public art belt |
+| South & Waterfront | Ireland Park / Immigration Axis | Immigration + arrival narrative zone |
+| South & Waterfront | Exhibition Place Grounds | Large-scale civic event + memorial zone |
+| South & Waterfront | Jack Layton Ferry Terminal Zone | Transit + civic memorial node |
+| South & Waterfront | Blue Jays Way Civic Edge | Entertainment + stadium-adjacent civic art pocket |
+| East | St. Lawrence Market District | Historic market + civic origin core |
+| East | King East / Old Town Core | Early Toronto street grid + heritage zone |
+| East | Corktown / Riverside Edge | Industrial + Don Valley edge zone |
+| East | St. James Cathedral Precinct | Religious + civic institutional cluster |
+| East | Queen East / Don River Interface | Transitional industrial-river corridor |
+| West | Osgoode / Civic Justice Precinct | Courts + legal institutions |
+| West | University Avenue Institutional Spine | Hospitals + civic administration corridor |
+| West | AGO / Cultural Corridor | Museum + cultural institution cluster |
+| West | Hospital District (UHN Zone) | Concentrated medical civic memory zone |
+| West | Queen West Judicial Edge | Transitional civic-commercial art edge |
 
 ## Data model (`data/artworks.csv`)
 
@@ -76,7 +89,7 @@ Principles: zones = geography; sub-zones = lived urban districts; layers = cultu
 Carried over unchanged from v2.3 on purpose; recorded here so they can be fixed deliberately.
 
 - **Misplaced rows:** in a few rows (Immigrant Family, People Walking, Community, Time Parts 1–2, Adam Beck Memorial, Endless Bench) the street address sits in `location_context` and `address` holds only "Toronto, ON".
-- **Time: And a Clock** is one work split across two sub-zones.
+- **Time: And a Clock** is one work split across three sub-zones.
 - **Accessibility** is "24/7" for every row and has not been checked.
 - **No coordinates**, and Layers 3 and 4 are nearly empty.
 - **Attributions are unverified** (`verified = no` everywhere). Some look doubtful and need checking against sources: Bitter Memories of Childhood, Equestrian Statue of Edward VII, Legends Row, Hours of the Day, Tembo.
