@@ -1,0 +1,92 @@
+# Toronto Public Art Map
+
+A structured inventory of outdoor, publicly accessible (on foot or by bike) art, civic statuary and architectural art in downtown Toronto, organised by **zone** (geography), **sub-zone** (walkable precinct) and **layer** (art classification).
+
+> Status: dataset v2.3 carried over from the earlier "Toronto Public Art Atlas". No coordinates yet, so it is not yet a map. See [Known issues](#known-issues-not-yet-fixed).
+
+## Repository layout
+
+| Path | What it is |
+|---|---|
+| `data/artworks.csv` | **Master dataset.** The single source of truth. |
+| `catalogue/` | Browsable pages by zone, **generated** from the CSV. Don't edit by hand. |
+| `scripts/build_catalogue.py` | Rebuilds `catalogue/` from the CSV. |
+| `archive/` | Original working notes, kept for provenance. |
+
+Rebuild the catalogue after editing the CSV: `python3 scripts/build_catalogue.py`
+
+## Zones
+
+| Zone | Boundary |
+|---|---|
+| Downtown - Business Core | Front St → Queen St, Yonge → University |
+| Downtown - Midtown | Queen St → Bloor St. Includes Nathan Phillips Square, Spirit Garden, Bloor Corridor, Queen's Park / UofT |
+| Downtown - South & Waterfront | South of Front St, Cherry St → Bathurst St corridor |
+| Downtown - East | East of Yonge St. Includes King East / St. Lawrence and Riverside (Queen East / Don Valley) |
+| Downtown - West | West of University Ave and north of Front St |
+
+## Layers
+
+1. **Outdoor Sculptures** — contemporary and historic freestanding artworks: abstract works, public commissions, sculpture gardens.
+2. **Civic Statuary** — monuments, memorials, cenotaphs, commemorative figures; political leaders, military and immigration memorials.
+3. **Architectural Art** — art integrated into architecture: reliefs, mosaics, stained glass, carved facades, decorative bridges, landmark ornament. Buildings are included for their artistic fabric, not merely because they are notable.
+4. **Temporal / Rotating** — seasonal installations, Nuit Blanche works, Waterfront Toronto temporary commissions, construction-hoarding art, temporary exhibits in public space. *(No entries yet.)*
+
+## Sub-zones
+
+Status: *Existing* = defined in the original system; *Existing-inferred* = inferred from the data; *New (proposed)* = proposed, not yet confirmed.
+
+| Zone | Sub-zone | Status | Definition |
+|---|---|---|---|
+| Business Core | Financial Core (Bay–Yonge–Wellington) | Existing-inferred | Core skyscraper + plaza network (TD, Brookfield, Commerce Court) |
+| Business Core | Union Station / Front Spine | Existing-inferred | Transit + civic arrival corridor |
+| Business Core | King Street Corridor | Existing-inferred | Entertainment + public realm sculpture edge |
+| Business Core | Yonge Street Edge | Existing-inferred | Vertical corridor linking south/north civic fabric |
+| Business Core | Brookfield / TD Courtyard Network | New (proposed) | Linked interior/exterior corporate plaza system |
+| Business Core | Commerce Court / Bay Complex | New (proposed) | Dense banking plaza cluster identity |
+| Midtown | Nathan Phillips Square | Existing | Civic plaza + major sculpture field |
+| Midtown | Spirit Garden | Existing | Indigenous commemorative installation system |
+| Midtown | Queen’s Park / UofT | Existing | Legislative + academic statuary field |
+| Midtown | Bloor Corridor | Existing | Cultural + institutional linear corridor |
+| Midtown | St. Michael’s / St. Mary Edge | New (proposed) | Campus-adjacent institutional micro-zone |
+| South & Waterfront | Harbourfront / Queens Quay | Existing-inferred | Waterfront promenade + public art belt |
+| South & Waterfront | Ireland Park / Immigration Axis | Existing-inferred | Immigration + arrival narrative zone |
+| South & Waterfront | Exhibition Place Grounds | Existing-inferred | Large-scale civic event + memorial zone |
+| South & Waterfront | Jack Layton Ferry Terminal Zone | Existing-inferred | Transit + civic memorial node |
+| South & Waterfront | Blue Jays Way Civic Edge | New (proposed) | Entertainment + stadium-adjacent civic art pocket |
+| East | St. Lawrence Market District | Existing-inferred | Historic market + civic origin core |
+| East | King East / Old Town Core | Existing-inferred | Early Toronto street grid + heritage zone |
+| East | Corktown / Riverside Edge | Existing-inferred | Industrial + Don Valley edge zone |
+| East | St. James Cathedral Precinct | Existing-inferred | Religious + civic institutional cluster |
+| East | Queen East / Don River Interface | New (proposed) | Transitional industrial-river corridor |
+| West | Osgoode / Civic Justice Precinct | Existing-inferred | Courts + legal institutions |
+| West | University Avenue Institutional Spine | Existing-inferred | Hospitals + civic administration corridor |
+| West | AGO / Cultural Corridor | Existing-inferred | Museum + cultural institution cluster |
+| West | Hospital District (UHN Zone) | New (proposed) | Concentrated medical civic memory zone |
+| West | Queen West Judicial Edge | New (proposed) | Transitional civic-commercial art edge |
+
+## Data model (`data/artworks.csv`)
+
+`id`, `name`, `zone`, `sub_zone`, `type`, `accessibility`, `location_context` (plaza / courtyard / grounds; was "Plaza/Courtyard"), `address`, `lat`, `lng`, `layer`, `status`, `artist_attribution`, `description`, `source_url`, `verified` (`yes` / `no`).
+
+Principles: zones = geography; sub-zones = lived urban districts; layers = cultural classification. Each work has exactly **one** layer: the primary reason it is on the map. All works are outdoors and reachable on foot or by bike.
+
+## Known issues (not yet fixed)
+
+Carried over unchanged from v2.3 on purpose; recorded here so they can be fixed deliberately.
+
+- **Misplaced rows:** in a few rows (Immigrant Family, People Walking, Community, Time Parts 1–2, Adam Beck Memorial, Endless Bench) the street address sits in `location_context` and `address` holds only "Toronto, ON".
+- **Boundary conflicts:** Pillars of Justice (361 University Ave) lies north of Queen; Legends Row (40 Bay St) lies south of Front; Bitter Memories of Childhood (Exhibition Place) lies west of Bathurst. Each conflicts with the zone definitions above.
+- **Time: And a Clock** is one work split across three sub-zones.
+- **`type` vs `layer`** overlap and sometimes disagree (e.g. Edward VII is type "sculpture", layer 2).
+- **Accessibility** is "24/7" for every row and has not been checked.
+- **No coordinates**, and Layers 3 and 4 are nearly empty.
+- **Attributions are unverified** (`verified = no` everywhere). Some look doubtful and need checking against sources: Bitter Memories of Childhood, Equestrian Statue of Edward VII, Legends Row, Hours of the Day, Tembo.
+
+## License
+
+Code: MIT (`LICENSE`). Data: CC BY 4.0 (`LICENSE-DATA`).
+
+## Contributing
+
+Corrections and additions are welcome: open an issue or pull request with the artwork, the correction, and a source.
