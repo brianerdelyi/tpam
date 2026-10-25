@@ -117,13 +117,26 @@
       if (!fromList) it.li.scrollIntoView({ block: "nearest", behavior: "smooth" });
     }
 
+    // desktop: tab that hides and shows the left panel
+    var ptab = $("panelTab");
+    ptab.addEventListener("click", function () {
+      var hide = !document.body.classList.contains("panel-hidden");
+      document.body.classList.toggle("panel-hidden", hide);
+      ptab.setAttribute("aria-expanded", String(!hide));
+      ptab.setAttribute("aria-label", hide ? "Show panel" : "Hide panel");
+      ptab.title = hide ? "Show panel" : "Hide panel";
+      ptab.firstChild.textContent = hide ? "\u203A" : "\u2039";
+      setTimeout(function () { map.invalidateSize(); }, 300);
+    });
+
     // phone: one full-screen view at a time (map or list)
     var phoneQuery = window.matchMedia("(max-width: 760px)");
     function isPhone() { return phoneQuery.matches; }
     var view = "map";
     function showView(v) {
       view = v;
-      document.body.className = "view-" + v;
+      document.body.classList.remove("view-map", "view-list");
+      document.body.classList.add("view-" + v);
       $("viewBtn").textContent = v === "map" ? "List" : "Map";
       if (v === "map") { map.invalidateSize(); }
     }

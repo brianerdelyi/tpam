@@ -47,9 +47,17 @@ main { position: relative; overflow: hidden; flex: 1; min-height: 0; display: gr
 .pop .small { font-size: 12px; margin: 0; }
 .leaflet-container { font: inherit; }
 #viewBtn { display: none; margin-left: auto; }
-#zonebar, #deskNotice { display: none; }
+#zonebar, #deskNotice, #panelTab { display: none; }
 @media (min-width: 761px) {
   #toolbar, #pane, #notice { display: none; }
+  main { transition: grid-template-columns .25s ease; }
+  #list { min-width: 0; }
+  body.panel-hidden main { grid-template-columns: 0 1fr; }
+  body.panel-hidden #list { visibility: hidden; border-right: 0; }
+  #panelTab { display: block; position: absolute; z-index: 1100; top: 50%; left: 360px; transform: translateY(-50%); width: 22px; height: 64px; padding: 0; border: 1px solid var(--line); border-left: 0; border-radius: 0 10px 10px 0; background: var(--panel); color: var(--fg); font-size: 22px; line-height: 1; cursor: pointer; box-shadow: 2px 0 6px rgba(0,0,0,.15); transition: left .25s ease; }
+  #panelTab:hover { background: color-mix(in srgb, var(--accent) 12%, var(--panel)); }
+  #panelTab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  body.panel-hidden #panelTab { left: 0; }
   #list { display: flex; flex-direction: column; overflow: hidden; }
   #zonebar { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
   #zonebar button { display: flex; align-items: center; gap: 8px; text-align: left; font: inherit; font-size: 13px; line-height: 1.25; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--fg); cursor: pointer; }
