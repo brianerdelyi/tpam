@@ -43,6 +43,11 @@ corridor = {"label": c["label"], "color": c["color"], "coords": [west] + [P[k] f
 with open(os.path.join(out, "zones.json"), "w", encoding="utf-8") as f:
     json.dump({"zones": zones, "corridor": corridor}, f, ensure_ascii=False)
 
-# 4. tell GitHub Pages not to run Jekyll
+# 4. site config (Google My Maps embed URL)
+cfg = json.load(open(os.path.join(root, "data", "site.json"), encoding="utf-8"))
+with open(os.path.join(out, "config.json"), "w", encoding="utf-8") as f:
+    json.dump({"my_maps_embed_url": cfg.get("my_maps_embed_url", "").strip()}, f)
+
+# 5. tell GitHub Pages not to run Jekyll
 open(os.path.join(out, ".nojekyll"), "w").close()
 print(f"built site/: {len(works)} works, {len(zones)} zones")
