@@ -8,8 +8,11 @@ slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 zones = OrderedDict()
 for r in rows: zones.setdefault(r["zone"], []).append(r)
 out = os.path.join(root, "catalogue"); os.makedirs(out, exist_ok=True)
-for f in os.listdir(out):
-    if f.endswith(".md"): os.remove(os.path.join(out, f))
+wanted = {"README.md"} | {slug(z) + ".md" for z in zones}
+for f in os.listdir(out):  # remove pages for zones that no longer exist
+    if f.endswith(".md") and f not in wanted:
+        try: os.remove(os.path.join(out, f))
+        except OSError: pass
 idx = ["# Toronto Public Art Map — Catalogue", "",
        "Generated from `data/artworks.csv`. Do not edit these pages by hand; edit the CSV and re-run `scripts/build_catalogue.py`.", "",
        "| Zone | Works |", "|---|---|"]
@@ -27,7 +30,6 @@ for z, items in zones.items():
             L += [f"### {r['name']}", "",
                   f"- **ID:** {r['id']}",
                   f"- **Layer:** {r['layer']}",
-                  f"- **Type:** {r['type']}",
                   f"- **Location:** {r['location_context']}" + (f" — {r['address']}" if r['address'] else ""),
                   f"- **Accessibility:** {r['accessibility']}",
                   f"- **Artist / attribution:** {r['artist_attribution'] or '—'}",

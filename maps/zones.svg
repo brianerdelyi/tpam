@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 900" width="1100" height="900" font-family="Helvetica, Arial, sans-serif">
+<title>Toronto Public Art Map: zones (schematic)</title>
+<defs>
+<linearGradient id="bloor" x1="265" x2="860" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7a56b0" stop-opacity="0"/><stop offset="0.25" stop-color="#7a56b0" stop-opacity="0.5"/><stop offset="0.75" stop-color="#7a56b0" stop-opacity="0.5"/><stop offset="1" stop-color="#7a56b0" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1100" height="900" fill="#fafaf7"/>
+<text x="550.0" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#222">Toronto Public Art Map: Zones</text>
+<text x="550.0" y="54" text-anchor="middle" font-size="13" fill="#555">Schematic, not to scale. Number = works in the dataset.</text>
+<rect x="90.0" y="787.5" width="945.0" height="35.0" fill="#dbe9f4"/>
+<text x="632" y="805" text-anchor="middle" font-size="15" font-style="italic" fill="#5b86a6">Lake Ontario</text>
+<polygon points="168.7,787.5 982.5,787.5 982.5,630.0 168.7,630.0" fill="#2b7bb9" fill-opacity="0.30" stroke="#2b7bb9" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="168.7,630.0 475.0,630.0 475.0,133.0 168.7,133.0" fill="#2f9457" fill-opacity="0.30" stroke="#2f9457" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="475.0,630.0 597.5,630.0 597.5,509.3 475.0,509.3" fill="#c98a00" fill-opacity="0.30" stroke="#c98a00" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="475.0,509.3 702.5,509.3 702.5,133.0 475.0,133.0" fill="#7a56b0" fill-opacity="0.30" stroke="#7a56b0" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="597.5,630.0 982.5,630.0 982.5,133.0 702.5,133.0 702.5,509.3 597.5,509.3" fill="#c4503f" fill-opacity="0.30" stroke="#c4503f" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="265.0" y="110.3" width="595.0" height="45.5" fill="url(#bloor)"/>
+<line x1="168.7" y1="787.5" x2="168.7" y2="101.5" stroke="#555" stroke-width="1" />
+<text x="168.7" y="93.5" text-anchor="middle" font-size="12" fill="#333">Bathurst</text>
+<line x1="475.0" y1="630.0" x2="475.0" y2="101.5" stroke="#555" stroke-width="1" />
+<text x="475.0" y="93.5" text-anchor="middle" font-size="12" fill="#333">University</text>
+<line x1="597.5" y1="630.0" x2="597.5" y2="101.5" stroke="#555" stroke-width="1" />
+<text x="597.5" y="93.5" text-anchor="middle" font-size="12" fill="#333">Yonge</text>
+<line x1="702.5" y1="630.0" x2="702.5" y2="101.5" stroke="#555" stroke-width="1" />
+<text x="702.5" y="93.5" text-anchor="middle" font-size="12" fill="#333">Jarvis</text>
+<line x1="842.5" y1="630.0" x2="842.5" y2="101.5" stroke="#555" stroke-width="1" />
+<text x="842.5" y="93.5" text-anchor="middle" font-size="12" fill="#333">Parliament</text>
+<line x1="982.5" y1="630.0" x2="982.5" y2="101.5" stroke="#555" stroke-width="1" />
+<text x="982.5" y="93.5" text-anchor="middle" font-size="12" fill="#333">Broadview</text>
+<line x1="168.7" y1="133.0" x2="982.5" y2="133.0" stroke="#555" stroke-width="1"/>
+<text x="988.5" y="137.0" font-size="12" fill="#333">Bloor</text>
+<line x1="168.7" y1="509.3" x2="982.5" y2="509.3" stroke="#555" stroke-width="1"/>
+<text x="988.5" y="513.2" font-size="12" fill="#333">Queen</text>
+<line x1="168.7" y1="630.0" x2="982.5" y2="630.0" stroke="#555" stroke-width="1"/>
+<text x="988.5" y="634.0" font-size="12" fill="#333">Front</text>
+<text x="580" y="704" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Downtown - South &amp; Waterfront</text>
+<text x="580" y="722" text-anchor="middle" font-size="12" fill="#333">5 works</text>
+<text x="321" y="385" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Downtown - West</text>
+<text x="321" y="403" text-anchor="middle" font-size="12" fill="#333">4 works</text>
+<text x="536" y="561" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Business</text>
+<text x="536" y="577" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Core</text>
+<text x="536" y="594" text-anchor="middle" font-size="12" fill="#333">14 works</text>
+<text x="589" y="333" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Downtown - Midtown</text>
+<text x="589" y="351" text-anchor="middle" font-size="12" fill="#333">14 works</text>
+<text x="842" y="333" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Downtown - East</text>
+<text x="842" y="351" text-anchor="middle" font-size="12" fill="#333">6 works</text>
+<text x="379" y="124" text-anchor="middle" font-size="12" font-style="italic" fill="#7a56b0">Bloor Corridor</text>
+<text x="379" y="153" text-anchor="middle" font-size="11" font-style="italic" fill="#7a56b0">(flexible extent)</text>
+<circle cx="518.8" cy="630.0" r="3.5" fill="#222"/>
+<text x="512.8" y="622.0" font-size="11" fill="#222" text-anchor="end">Union Station</text>
+<circle cx="545.0" cy="509.3" r="3.5" fill="#222"/>
+<text x="539.0" y="501.3" font-size="11" fill="#222" text-anchor="end">Nathan Phillips Sq</text>
+<circle cx="489.0" cy="280.0" r="3.5" fill="#222"/>
+<text x="483.0" y="284.0" font-size="11" fill="#222" text-anchor="end">Queen's Park</text>
+<circle cx="676.2" cy="626.5" r="3.5" fill="#222"/>
+<text x="676.2" y="618.5" font-size="11" fill="#222" text-anchor="middle">St. Lawrence Market</text>
+<circle cx="422.5" cy="437.5" r="3.5" fill="#222"/>
+<text x="416.5" y="441.5" font-size="11" fill="#222" text-anchor="end">AGO</text>
+<text x="161" y="696" text-anchor="end" font-size="11" fill="#222">&#8592; Exhibition Place</text>
+<text x="161" y="710" text-anchor="end" font-size="10" fill="#555">(west of Bathurst)</text>
+<g transform="translate(1030,80)"><polygon points="0,-24 8,0 0,-6 -8,0" fill="#222"/><text y="18" text-anchor="middle" font-size="13" fill="#222">N</text></g>
+<rect x="90" y="822" width="16" height="16" fill="#2f9457" fill-opacity="0.45" stroke="#2f9457" stroke-width="2"/>
+<text x="112" y="835" font-size="13" fill="#222">West</text>
+<rect x="160" y="822" width="16" height="16" fill="#c98a00" fill-opacity="0.45" stroke="#c98a00" stroke-width="2"/>
+<text x="182" y="835" font-size="13" fill="#222">Business Core</text>
+<rect x="302" y="822" width="16" height="16" fill="#7a56b0" fill-opacity="0.45" stroke="#7a56b0" stroke-width="2"/>
+<text x="324" y="835" font-size="13" fill="#222">Midtown</text>
+<rect x="396" y="822" width="16" height="16" fill="#c4503f" fill-opacity="0.45" stroke="#c4503f" stroke-width="2"/>
+<text x="418" y="835" font-size="13" fill="#222">East</text>
+<rect x="466" y="822" width="16" height="16" fill="#2b7bb9" fill-opacity="0.45" stroke="#2b7bb9" stroke-width="2"/>
+<text x="488" y="835" font-size="13" fill="#222">South &amp; Waterfront</text>
+<text x="90" y="862" font-size="11" fill="#555">Boundaries are approximate guidelines. East is assumed to start at Front St on its south edge. Midtown takes precedence where zones overlap.</text>
+<text x="90" y="878" font-size="11" fill="#555">Some works sit outside their zone boundary by design (e.g. Time: And a Clock Part 3, east of Broadview).</text>
+</svg>

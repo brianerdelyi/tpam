@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toronto Public Art Map: Zones</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root { --bg:#fff; --fg:#1d1d1b; --muted:#5d5d58; --panel:rgba(255,255,255,.94); --line:#d6d6d0; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#16161a; --fg:#ececea; --muted:#a4a4a0; --panel:rgba(30,30,34,.94); --line:#3a3a40; } }
+  html, body { height:100%; margin:0; background:var(--bg); color:var(--fg); font:14px/1.4 -apple-system, Helvetica, Arial, sans-serif; }
+  #map { position:absolute; inset:0; }
+  #panel { position:absolute; z-index:1000; top:12px; right:12px; width:250px; max-width:calc(100vw - 24px); box-sizing:border-box;
+           background:var(--panel); color:var(--fg); border:1px solid var(--line); border-radius:10px; padding:12px 14px; box-shadow:0 2px 10px rgba(0,0,0,.15); }
+  #panel h1 { font-size:15px; margin:0 0 2px; }
+  #panel p { margin:0 0 8px; color:var(--muted); font-size:12px; }
+  .row { display:flex; align-items:center; gap:8px; margin:5px 0; cursor:pointer; }
+  .sw { width:16px; height:16px; border-radius:3px; border:2px solid; flex:none; }
+  .row .n { margin-left:auto; color:var(--muted); font-size:12px; }
+  .btns { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; padding-top:10px; border-top:1px solid var(--line); }
+  button { font:inherit; font-size:12px; padding:5px 9px; border:1px solid var(--line); background:var(--bg); color:var(--fg); border-radius:6px; cursor:pointer; }
+  button.on { background:var(--fg); color:var(--bg); }
+  #status { font-size:11px; color:var(--muted); margin-top:6px; min-height:14px; }
+  .pt { width:14px; height:14px; border-radius:50%; background:#fff; border:3px solid #222; box-sizing:border-box; cursor:move; }
+  .zlabel { background:transparent; border:none; box-shadow:none; font-weight:700; font-size:13px; color:#1d1d1b; text-align:center; text-shadow:0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff; }
+  @media (max-width:520px) { #panel { top:auto; bottom:12px; right:12px; left:12px; width:auto; } }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<button id="show" style="display:none;position:absolute;z-index:1000;top:12px;right:12px">Show panel</button>
+<div id="panel">
+  <h1>Toronto Public Art Map: Zones</h1>
+  <p>Approximate boundaries. Click a zone for details.</p>
+  <div id="legend"></div>
+  <div class="row" id="bloorRow"><span class="sw" style="background:#7a56b055;border-color:#7a56b0;border-style:dashed"></span><span>Bloor Corridor (flexible)</span></div>
+  <div class="btns">
+    <button id="edit">Edit corners</button>
+    <button id="copy">Copy coordinates</button>
+    <button id="reset">Reset</button>
+    <button id="hide">Hide panel</button>
+  </div>
+  <div id="status"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ---- Corner points (lat, lng): approximate street intersections. Drag them in "Edit corners" mode. ----
+const DEFAULT_POINTS = {
+  F_Bt: [43.6424, -79.4021],  // Front & Bathurst
+  F_U:  [43.6454, -79.3842],  // Front & University
+  F_Y:  [43.6471, -79.3765],  // Front & Yonge
+  F_Br: [43.6536, -79.3476],  // Front line at Broadview
+  Q_U:  [43.6508, -79.3865],  // Queen & University
+  Q_Y:  [43.6524, -79.3790],  // Queen & Yonge
+  Q_J:  [43.6540, -79.3722],  // Queen & Jarvis
+  B_Bt: [43.6665, -79.4115],  // Bloor & Bathurst
+  B_U:  [43.6676, -79.3938],  // Bloor & University
+  B_J:  [43.6725, -79.3789],  // Bloor & Jarvis
+  B_Br: [43.6771, -79.3586],  // Bloor & Broadview
+  L_Bt: [43.6381, -79.4005],  // waterfront edge at Bathurst
+  L_Y:  [43.6408, -79.3740],  // waterfront edge at Yonge
+  L_Br: [43.6470, -79.3470]   // waterfront edge at Broadview
+};
+const ZONES = [
+  { id:"sw", name:"Downtown - South & Waterfront", n:5,  color:"#2b7bb9", pts:["F_Bt","F_U","F_Y","F_Br","L_Br","L_Y","L_Bt"], desc:"South of Front St, Bathurst St to Broadview Ave." },
+  { id:"we", name:"Downtown - West",               n:4,  color:"#2f9457", pts:["F_Bt","F_U","Q_U","B_U","B_Bt"], desc:"University Ave to Bathurst St, Front St to Bloor St." },
+  { id:"bc", name:"Business Core",                 n:14, color:"#c98a00", pts:["F_U","F_Y","Q_Y","Q_U"], desc:"Front St to Queen St, Yonge to University." },
+  { id:"mt", name:"Downtown - Midtown",            n:14, color:"#7a56b0", pts:["Q_U","Q_Y","Q_J","B_J","B_U"], desc:"Queen St to Bloor St, University Ave to Jarvis St. The Bloor Corridor extends beyond these limits." },
+  { id:"ea", name:"Downtown - East",               n:6,  color:"#c4503f", pts:["F_Y","F_Br","B_Br","B_J","Q_J","Q_Y"], desc:"Yonge St to Broadview Ave, north to Bloor St, outside the Midtown area." }
+];
+
+const pts = JSON.parse(JSON.stringify(DEFAULT_POINTS));
+const map = L.map("map", { zoomControl:true, attributionControl:false }).setView([43.6575, -79.3860], 14);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  maxZoom: 19, subdomains: "abcd",
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+}).addTo(map);
+
+L.control.attribution({ prefix:false }).addTo(map);
+
+const layers = {};
+ZONES.forEach(z => {
+  const poly = L.polygon(z.pts.map(k => pts[k]), { color:z.color, weight:3, fillColor:z.color, fillOpacity:.28 }).addTo(map);
+  poly.bindPopup(`<b>${z.name}</b><br>${z.n} works in the dataset<br><span style="color:#555">${z.desc}</span>`);
+  poly.bindTooltip(`${z.name} (${z.n})`, { permanent:true, direction:"center", className:"zlabel" });
+  layers[z.id] = poly;
+});
+
+// Bloor Corridor: nested translucent strokes so the ends fade out
+const mid = (a, b, t) => [a[0] + (b[0]-a[0])*t, a[1] + (b[1]-a[1])*t];
+const corridor = [];
+function drawCorridor() {
+  corridor.forEach(l => map.removeLayer(l));
+  corridor.length = 0;
+  const west = mid(pts.B_U, pts.B_Bt, 0.5);
+  const east = [pts.B_J[0] + 0.0011, pts.B_J[1] + 0.0048];
+  [[44,.10],[30,.14],[18,.20]].forEach(([w, o]) => {
+    const l = L.polyline([west, pts.B_U, pts.B_J, east], { color:"#7a56b0", weight:w, opacity:o, lineCap:"round", interactive:false }).addTo(map);
+    corridor.push(l);
+  });
+  const t = L.polyline([west, pts.B_U, pts.B_J, east], { color:"#7a56b0", weight:30, opacity:0, lineCap:"round" }).addTo(map);
+  t.bindTooltip("Bloor Corridor (flexible extent)", { sticky:true });
+  corridor.push(t);
+}
+drawCorridor();
+
+// Legend with toggles
+const legend = document.getElementById("legend");
+ZONES.slice().sort((a,b) => a.name.localeCompare(b.name)).forEach(z => {
+  const row = document.createElement("label");
+  row.className = "row";
+  row.innerHTML = `<input type="checkbox" checked><span class="sw" style="background:${z.color}55;border-color:${z.color}"></span><span>${z.name.replace("Downtown - ","")}</span><span class="n">${z.n}</span>`;
+  row.querySelector("input").addEventListener("change", e => e.target.checked ? layers[z.id].addTo(map) : map.removeLayer(layers[z.id]));
+  legend.appendChild(row);
+});
+document.getElementById("bloorRow").addEventListener("click", () => {
+  const show = !corridor[0] || !map.hasLayer(corridor[0]);
+  corridor.forEach(l => show ? l.addTo(map) : map.removeLayer(l));
+});
+
+// Edit mode: draggable shared corner points
+const markers = {};
+const status = document.getElementById("status");
+const setStatus = s => { status.textContent = s; };
+function refresh() {
+  ZONES.forEach(z => layers[z.id].setLatLngs(z.pts.map(k => pts[k])));
+  drawCorridor();
+}
+function makeMarker(k) {
+  const m = L.marker(pts[k], { draggable:true, icon:L.divIcon({ className:"", html:'<div class="pt"></div>', iconSize:[14,14], iconAnchor:[7,7] }) });
+  const S = { Bt:"Bathurst", U:"University", Y:"Yonge", Br:"Broadview", J:"Jarvis" };
+  const R = { F:"Front", Q:"Queen", B:"Bloor", L:"Waterfront" };
+  const [a, b] = k.split("_");
+  m.bindTooltip(a === "L" ? "Waterfront edge at " + S[b] : R[a] + " & " + S[b], { direction:"top", offset:[0,-8] });
+  m.on("drag", e => { const p = e.target.getLatLng(); pts[k] = [p.lat, p.lng]; refresh(); });
+  return m;
+}
+let editing = false;
+document.getElementById("edit").addEventListener("click", e => {
+  editing = !editing;
+  e.target.classList.toggle("on", editing);
+  e.target.textContent = editing ? "Done editing" : "Edit corners";
+  Object.keys(pts).forEach(k => {
+    if (editing) { markers[k] = makeMarker(k).addTo(map); }
+    else if (markers[k]) { map.removeLayer(markers[k]); delete markers[k]; }
+  });
+  setStatus(editing ? "Drag the dots onto the street corners." : "");
+});
+document.getElementById("copy").addEventListener("click", async () => {
+  const out = JSON.stringify(Object.fromEntries(Object.entries(pts).map(([k,v]) => [k, [+v[0].toFixed(5), +v[1].toFixed(5)]])), null, 2);
+  try { await navigator.clipboard.writeText(out); setStatus("Coordinates copied."); }
+  catch (_) { window.prompt("Copy these coordinates:", out); }
+});
+const panel = document.getElementById("panel"), showBtn = document.getElementById("show");
+document.getElementById("hide").addEventListener("click", () => { panel.style.display = "none"; showBtn.style.display = "block"; });
+showBtn.addEventListener("click", () => { panel.style.display = ""; showBtn.style.display = "none"; });
+document.getElementById("reset").addEventListener("click", () => {
+  Object.keys(DEFAULT_POINTS).forEach(k => { pts[k] = DEFAULT_POINTS[k].slice(); if (markers[k]) markers[k].setLatLng(pts[k]); });
+  refresh(); setStatus("Reset to defaults.");
+});
+map.fitBounds(L.latLngBounds(Object.values(pts)).pad(0.08));
+</script>
+</body>
+</html>

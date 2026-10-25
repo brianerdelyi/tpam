@@ -8,7 +8,6 @@
 
 - **ID:** TPAM-040
 - **Layer:** Layer 2 – Civic Statuary
-- **Type:** memorial
 - **Location:** University Ave & Queen St W — Toronto, ON
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
@@ -20,7 +19,6 @@ Memorial honoring hydroelectric pioneer Sir Adam Beck.
 
 - **ID:** TPAM-041
 - **Layer:** Layer 1 – Outdoor Sculptures
-- **Type:** sculpture
 - **Location:** 555 University Ave — Toronto, ON
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
@@ -34,7 +32,6 @@ A linear sculptural seating installation along University Avenue.
 
 - **ID:** TPAM-042
 - **Layer:** Layer 1 – Outdoor Sculptures
-- **Type:** sculpture
 - **Location:** Osgoode Hall — 130 Queen St W, Toronto, ON
 - **Accessibility:** 24/7
 - **Artist / attribution:** not consistently documented
@@ -48,7 +45,6 @@ A sculptural installation outside Osgoode Hall referencing justice.
 
 - **ID:** TPAM-043
 - **Layer:** Layer 1 – Outdoor Sculptures
-- **Type:** sculpture
 - **Location:** Art Gallery of Ontario — 317 Dundas St W, Toronto, ON
 - **Accessibility:** 24/7
 - **Artist / attribution:** Brian Jungen

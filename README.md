@@ -20,10 +20,14 @@ Rebuild the catalogue after editing the CSV: `python3 scripts/build_catalogue.py
 | Zone | Boundary |
 |---|---|
 | Downtown - Business Core | Front St → Queen St, Yonge → University |
-| Downtown - Midtown | Queen St → Bloor St. Includes Nathan Phillips Square, Spirit Garden, Bloor Corridor, Queen's Park / UofT |
-| Downtown - South & Waterfront | South of Front St, Cherry St → Bathurst St corridor |
-| Downtown - East | East of Yonge St. Includes King East / St. Lawrence and Riverside (Queen East / Don Valley) |
-| Downtown - West | West of University Ave and north of Front St |
+| Downtown - Midtown | Queen St → Bloor St, University Ave → Jarvis St, except the Bloor Corridor, a loosely defined region along Bloor St that extends beyond those limits. Includes Nathan Phillips Square, Spirit Garden, Bloor Corridor, Queen's Park / UofT |
+| Downtown - South & Waterfront | South of Front St, Bathurst St → Broadview Ave |
+| Downtown - East | Yonge St → Broadview Ave, north to Bloor St, outside the Midtown area. Includes King East / St. Lawrence and Riverside (Queen East / Don Valley) |
+| Downtown - West | University Ave → Bathurst St, Front St → Bloor St |
+
+Zone boundaries are guidelines, not strict rules. Each work's zone is a curatorial choice, and some works sit outside the literal boundaries on purpose. Examples: Pillars of Justice (361 University Ave, north of Queen) in Business Core; Legends Row (40 Bay St, south of Front) in Business Core; Bitter Memories of Childhood (Exhibition Place, west of Bathurst) in South & Waterfront; works on University Ave itself in West; Time: And a Clock Part 3 (870 Queen St E, east of Broadview) in East.
+
+Where zones overlap, Midtown takes precedence: between Queen and Bloor, and between University and Jarvis, a work belongs to Midtown rather than East or West. The Bloor Corridor is an exception to the east/west limits because Bloor is a major east-west street: art along it belongs to Midtown even outside University–Jarvis. Its extent is not fixed and may change, so membership is decided case by case, not by a coordinate rule.
 
 ## Layers
 
@@ -47,7 +51,7 @@ Status: *Existing* = defined in the original system; *Existing-inferred* = infer
 | Midtown | Nathan Phillips Square | Existing | Civic plaza + major sculpture field |
 | Midtown | Spirit Garden | Existing | Indigenous commemorative installation system |
 | Midtown | Queen’s Park / UofT | Existing | Legislative + academic statuary field |
-| Midtown | Bloor Corridor | Existing | Cultural + institutional linear corridor |
+| Midtown | Bloor Corridor | Existing | Cultural + institutional linear corridor; a region with a flexible extent |
 | Midtown | St. Michael’s / St. Mary Edge | New (proposed) | Campus-adjacent institutional micro-zone |
 | South & Waterfront | Harbourfront / Queens Quay | Existing-inferred | Waterfront promenade + public art belt |
 | South & Waterfront | Ireland Park / Immigration Axis | Existing-inferred | Immigration + arrival narrative zone |
@@ -67,7 +71,7 @@ Status: *Existing* = defined in the original system; *Existing-inferred* = infer
 
 ## Data model (`data/artworks.csv`)
 
-`id`, `name`, `zone`, `sub_zone`, `type`, `accessibility`, `location_context` (plaza / courtyard / grounds; was "Plaza/Courtyard"), `address`, `lat`, `lng`, `layer`, `status`, `artist_attribution`, `description`, `source_url`, `verified` (`yes` / `no`).
+`id`, `name`, `zone`, `sub_zone`, `accessibility`, `location_context` (plaza / courtyard / grounds; was "Plaza/Courtyard"), `address`, `lat`, `lng`, `layer`, `status`, `artist_attribution`, `description`, `source_url`, `verified` (`yes` / `no`).
 
 Principles: zones = geography; sub-zones = lived urban districts; layers = cultural classification. Each work has exactly **one** layer: the primary reason it is on the map. All works are outdoors and reachable on foot or by bike.
 
@@ -76,9 +80,7 @@ Principles: zones = geography; sub-zones = lived urban districts; layers = cultu
 Carried over unchanged from v2.3 on purpose; recorded here so they can be fixed deliberately.
 
 - **Misplaced rows:** in a few rows (Immigrant Family, People Walking, Community, Time Parts 1–2, Adam Beck Memorial, Endless Bench) the street address sits in `location_context` and `address` holds only "Toronto, ON".
-- **Boundary conflicts:** Pillars of Justice (361 University Ave) lies north of Queen; Legends Row (40 Bay St) lies south of Front; Bitter Memories of Childhood (Exhibition Place) lies west of Bathurst. Each conflicts with the zone definitions above.
 - **Time: And a Clock** is one work split across three sub-zones.
-- **`type` vs `layer`** overlap and sometimes disagree (e.g. Edward VII is type "sculpture", layer 2).
 - **Accessibility** is "24/7" for every row and has not been checked.
 - **No coordinates**, and Layers 3 and 4 are nearly empty.
 - **Attributions are unverified** (`verified = no` everywhere). Some look doubtful and need checking against sources: Bitter Memories of Childhood, Equestrian Statue of Edward VII, Legends Row, Hours of the Day, Tembo.
