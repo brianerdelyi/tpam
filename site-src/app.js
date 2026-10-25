@@ -110,69 +110,46 @@
       var m = markers[id];
       if (m) {
         if (fromList) {
-          if (isPhone()) { showView("map"); }
+          if (isPhone()) { setPanel(false); }
           map.setView(m.getLatLng(), Math.max(map.getZoom(), 16)); m.openPopup();
         }
       } else if (fromList) { /* no coordinates yet */ }
       if (!fromList) it.li.scrollIntoView({ block: "nearest", behavior: "smooth" });
     }
 
-    // desktop: tab that hides and shows the left panel
-    var ptab = $("panelTab");
-    ptab.addEventListener("click", function () {
-      var hide = !document.body.classList.contains("panel-hidden");
-      document.body.classList.toggle("panel-hidden", hide);
-      ptab.setAttribute("aria-expanded", String(!hide));
-      ptab.setAttribute("aria-label", hide ? "Show panel" : "Hide panel");
-      ptab.title = hide ? "Show panel" : "Hide panel";
-      ptab.firstChild.textContent = hide ? "\u203A" : "\u2039";
-      setTimeout(function () { map.invalidateSize(); }, 300);
-    });
-
-    // phone: one full-screen view at a time (map or list)
+    // one panel (filter + list) that slides in and out; open by default on desktop, closed on phones
     var phoneQuery = window.matchMedia("(max-width: 760px)");
     function isPhone() { return phoneQuery.matches; }
-    var view = "map";
-    function showView(v) {
-      view = v;
-      document.body.classList.remove("view-map", "view-list");
-      document.body.classList.add("view-" + v);
-      $("viewBtn").textContent = v === "map" ? "List" : "Map";
-      if (v === "map") { map.invalidateSize(); }
+    var ptab = $("panelTab"), chev = ptab.querySelector(".chev");
+    function setPanel(open) {
+      document.body.classList.toggle("panel-hidden", !open);
+      ptab.setAttribute("aria-expanded", String(open));
+      var label = open ? "Hide panel" : (isPhone() ? "Show works and filter" : "Show panel");
+      ptab.setAttribute("aria-label", label); ptab.title = label;
+      chev.textContent = open ? "\u2039" : "\u203A";
+      setTimeout(function () { map.invalidateSize(); }, 300);
     }
-    $("viewBtn").addEventListener("click", function () {
-      var toMap = view !== "map";
-      showView(view === "map" ? "list" : "map");
-      if (toMap) { setFilter(filter); }
-    });
-    showView("map");
+    ptab.addEventListener("click", function () { setPanel(document.body.classList.contains("panel-hidden")); });
+    $("panelClose").addEventListener("click", function () { setPanel(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && isPhone() && !document.body.classList.contains("panel-hidden")) setPanel(false); });
+    setPanel(!isPhone());
 
-    // filter chips (one set of controls)
-    var bar = $("zonelist");
-    var deskbar = $("zonebar");
+    // zone buttons (the only filter)
+    var bar = $("zonebar");
     function chip(label, zone, col) {
       var n = zone ? works.filter(function (w) { return w.zone === zone; }).length : works.length;
-      [bar, deskbar].forEach(function (host) {
-        var b = mk("button"); b.type = "button";
-        if (col) { var d = mk("span", "dot"); d.style.background = col; b.appendChild(d); }
-        b.appendChild(document.createTextNode(label + " (" + n + ")"));
-        b.addEventListener("click", function () { setFilter(zone); closePane(); });
-        b.dataset.zone = zone || ""; host.appendChild(b);
-      });
+      var b = mk("button"); b.type = "button";
+      if (col) { var d = mk("span", "dot"); d.style.background = col; b.appendChild(d); }
+      b.appendChild(document.createTextNode(label + " (" + n + ")"));
+      b.addEventListener("click", function () { setFilter(zone); if (isPhone()) setPanel(false); });
+      b.dataset.zone = zone || ""; bar.appendChild(b);
     }
-    var pane = $("pane"), fbtn = $("filterBtn");
-    function openPane() { pane.classList.add("open"); fbtn.setAttribute("aria-expanded", "true"); }
-    function closePane() { if (!pane.classList.contains("open")) return; pane.classList.remove("open"); fbtn.setAttribute("aria-expanded", "false"); fbtn.focus(); }
-    fbtn.addEventListener("click", function () { pane.classList.contains("open") ? closePane() : openPane(); });
-    $("paneClose").addEventListener("click", closePane);
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pane.classList.contains("open")) closePane(); });
     chip("All zones", null);
     zones.forEach(function (z) { chip(z.short, z.zone, z.color); });
 
     function setFilter(zone) {
       filter = zone;
-      $("active").textContent = zone ? (short[zone] + " (" + works.filter(function (w) { return w.zone === zone; }).length + ")") : "All zones";
-      Array.prototype.forEach.call(document.querySelectorAll("#zonelist button, #zonebar button"), function (b) { b.setAttribute("aria-pressed", String((b.dataset.zone || null) === zone)); });
+      Array.prototype.forEach.call(document.querySelectorAll("#zonebar button"), function (b) { b.setAttribute("aria-pressed", String((b.dataset.zone || null) === zone)); });
       Object.keys(items).forEach(function (id) { items[id].li.hidden = !!zone && items[id].w.zone !== zone; });
       var pts = [];
       Object.keys(markers).forEach(function (id) {

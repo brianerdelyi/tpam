@@ -21,19 +21,14 @@
   </nav>
 </header>
 <p id="notice" role="note">Work in progress: if you see errors or want to update details please send feedback.</p>
-<div id="toolbar">
-  <button id="filterBtn" type="button" aria-expanded="false" aria-controls="pane">Filter by zone</button>
-  <span id="active">All zones</span>
-  <button id="viewBtn" type="button" aria-controls="list">List</button>
-</div>
 <main>
-  <aside id="pane" aria-label="Filter by zone">
-    <div class="panehead"><h2>Show works in</h2><button id="paneClose" type="button" aria-label="Close filter">&times;</button></div>
-    <div id="zonelist"></div>
-  </aside>
-  <button id="panelTab" type="button" aria-controls="list" aria-expanded="true" aria-label="Hide panel" title="Hide panel"><span aria-hidden="true">&#8249;</span></button>
-  <div id="mapbox"><div id="map"></div><p id="tilemsg" hidden>The base map could not be loaded. Pins and the list still work.</p></div>
-  <aside id="list" aria-label="Works">
+  <div id="mapbox">
+    <div id="map"></div>
+    <p id="tilemsg" hidden>The base map could not be loaded. Pins and the list still work.</p>
+  </div>
+  <button id="panelTab" type="button" aria-controls="list" aria-expanded="true" aria-label="Hide panel" title="Hide panel"><span class="chev" aria-hidden="true">&#8249;</span><span class="lbl">Works &amp; filter</span></button>
+  <aside id="list" aria-label="Works and filter">
+    <div class="panehead"><h2>Works &amp; filter</h2><button id="panelClose" type="button" aria-label="Close panel">&times;</button></div>
     <div id="zonebar" role="group" aria-label="Show works in"></div>
     <ul id="works"></ul>
     <p id="deskNotice" role="note">Work in progress: if you see errors or want to update details please send feedback.</p>
