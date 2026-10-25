@@ -2,7 +2,7 @@
 
 [← Catalogue](README.md) · 5 works
 
-## Ireland Park / Immigration Axis
+## Harbourfront & Queens Quay
 
 ### The Arrival
 
@@ -15,7 +15,29 @@
 
 A commemorative sculpture in Ireland Park referencing migration and arrival narratives.
 
-## Blue Jays Way Civic Edge
+### Monument to the War of 1812
+
+- **ID:** TPAM-031
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:** Waterfront / Bathurst Plaza — Bathurst St & Lake Shore Blvd W, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** not consistently documented
+- **Verified:** no
+
+A commemorative installation referencing early Canadian military history.
+
+### Jack’s Got Your Back (Layton Memorial)
+
+- **ID:** TPAM-033
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:** Jack Layton Ferry Terminal — 9 Queens Quay W, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** not consistently documented
+- **Verified:** no
+
+Memorial to Jack Layton at the Ferry Terminal.
+
+## Rogers Centre & Blue Jays Way
 
 ### The Audience
 
@@ -28,20 +50,7 @@ A commemorative sculpture in Ireland Park referencing migration and arrival narr
 
 A figurative installation near Rogers Centre celebrating spectatorship.
 
-## Harbourfront / Queens Quay
-
-### Monument to the War of 1812
-
-- **ID:** TPAM-031
-- **Layer:** Layer 2 – Civic Statuary
-- **Location:** Waterfront / Bathurst Plaza — Bathurst St & Lake Shore Blvd W, Toronto, ON
-- **Accessibility:** 24/7
-- **Artist / attribution:** not consistently documented
-- **Verified:** no
-
-A commemorative installation referencing early Canadian military history.
-
-## Exhibition Place Grounds
+## Exhibition Place
 
 ### Bitter Memories of Childhood
 
@@ -53,16 +62,3 @@ A commemorative installation referencing early Canadian military history.
 - **Verified:** no
 
 A memorial sculpture at Exhibition Place referencing wartime trauma.
-
-## Jack Layton Ferry Terminal Zone
-
-### Jack’s Got Your Back (Layton Memorial)
-
-- **ID:** TPAM-033
-- **Layer:** Layer 2 – Civic Statuary
-- **Location:** Jack Layton Ferry Terminal — 9 Queens Quay W, Toronto, ON
-- **Accessibility:** 24/7
-- **Artist / attribution:** not consistently documented
-- **Verified:** no
-
-Memorial to Jack Layton at the Ferry Terminal.

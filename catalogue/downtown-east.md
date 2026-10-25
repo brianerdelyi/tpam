@@ -2,7 +2,7 @@
 
 [← Catalogue](README.md) · 6 works
 
-## St. Lawrence Market District
+## St. Lawrence & Old Town
 
 ### Toronto Sculpture Garden
 
@@ -26,8 +26,6 @@ A rotating sculpture program in a small public garden space.
 
 A whimsical fountain sculpture featuring dogs and civic playfulness.
 
-## St. James Cathedral Precinct
-
 ### St. James Park Sculptures
 
 - **ID:** TPAM-036
@@ -38,8 +36,6 @@ A whimsical fountain sculpture featuring dogs and civic playfulness.
 - **Verified:** no
 
 Collection of public artworks in St. James Park.
-
-## King East / Old Town Core
 
 ### Time: And a Clock Part 1
 
@@ -52,7 +48,7 @@ Collection of public artworks in St. James Park.
 
 A distributed sculptural time-based installation across East Toronto (Parts 1–3).
 
-## Queen East / Don River Interface
+## Queen East & the Don
 
 ### Time: And a Clock Part 2
 
@@ -64,8 +60,6 @@ A distributed sculptural time-based installation across East Toronto (Parts 1–
 - **Verified:** no
 
 A distributed sculptural time-based installation across East Toronto (Parts 1–3).
-
-## Corktown / Riverside Edge
 
 ### Time: And a Clock Part 3
 

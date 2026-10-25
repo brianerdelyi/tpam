@@ -37,8 +37,6 @@ A commemorative war memorial dedicated to Canadian WWII service.
 
 A large abstract Henry Moore sculpture located in Nathan Phillips Square.
 
-## Spirit Garden
-
 ### Turtle Sculpture (Spirit Garden)
 
 - **ID:** TPAM-018
@@ -107,7 +105,7 @@ A figurative sculptural group along the Bloor corridor.
 
 A companion figurative installation near Bloor East.
 
-## Queen’s Park / UofT
+## Queen’s Park & St. Michael’s
 
 ### 48th Highlanders Memorial
 
@@ -141,8 +139,6 @@ A memorial dedicated to Canadian service in Afghanistan.
 - **Verified:** no
 
 Historic royal monument in Queen’s Park.
-
-## St. Michael’s / St. Mary Edge
 
 ### Businessman on a Horse
 

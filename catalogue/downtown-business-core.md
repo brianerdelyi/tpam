@@ -2,7 +2,7 @@
 
 [← Catalogue](README.md) · 14 works
 
-## Union Station / Front Spine
+## Union Station & Front St
 
 ### Pillars of Justice
 
@@ -26,7 +26,16 @@ A monumental installation symbolizing legal authority outside the Ontario Courts
 
 A public memorial celebrating immigration and cultural diversity at Union Station.
 
-## Financial Core (Bay–Yonge–Wellington)
+### Immigrant Family
+
+- **ID:** TPAM-007
+- **Layer:** Layer 1 – Outdoor Sculptures
+- **Location:** 18 Yonge St — Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** —
+- **Verified:** no
+
+## Financial District (Bay–Yonge–Wellington)
 
 ### Dreaming
 
@@ -50,6 +59,17 @@ A contemporary abstract sculpture located in a corporate courtyard environment.
 
 A sculptural installation in the TD Centre plaza emphasizing abstraction and spatial geometry.
 
+### Tembo, Mother of Elephants
+
+- **ID:** TPAM-004
+- **Layer:** Layer 1 – Outdoor Sculptures
+- **Location:** Commerce Court Plaza — 199 Bay St, Toronto, ON M5L 1E9
+- **Accessibility:** 24/7
+- **Artist / attribution:** Jonathan Borofsky (commonly attributed in public art records)
+- **Verified:** no
+
+A figurative sculptural work depicting an elephant family group in Commerce Court plaza.
+
 ### Cloud Gardens Park
 
 - **ID:** TPAM-008
@@ -61,29 +81,16 @@ A sculptural installation in the TD Centre plaza emphasizing abstraction and spa
 
 A hybrid civic landscape combining architecture, conservatory structure, and urban garden design.
 
-### Four Seasons Centre façade sculptures
+### Hours of the Day
 
-- **ID:** TPAM-011
-- **Layer:** Layer 3 – Architectural Art
-- **Location:** Four Seasons Centre Plaza — 145 Queen St W, Toronto, ON
-- **Accessibility:** 24/7
-- **Artist / attribution:** Diamond Schmitt Architects
-- **Verified:** no
-
-Integrated architectural ornamentation on the opera house façade.
-
-## Commerce Court / Bay Complex
-
-### Tembo, Mother of Elephants
-
-- **ID:** TPAM-004
+- **ID:** TPAM-009
 - **Layer:** Layer 1 – Outdoor Sculptures
-- **Location:** Commerce Court Plaza — 199 Bay St, Toronto, ON M5L 1E9
+- **Location:** Brookfield Place Courtyard — 145 Wellington St W, Toronto, ON
 - **Accessibility:** 24/7
-- **Artist / attribution:** Jonathan Borofsky (commonly attributed in public art records)
+- **Artist / attribution:** Michael Snow
 - **Verified:** no
 
-A figurative sculptural work depicting an elephant family group in Commerce Court plaza.
+A multi-figure sculptural installation in Brookfield Place referencing temporal cycles.
 
 ### Liquid Assets
 
@@ -96,53 +103,16 @@ A figurative sculptural work depicting an elephant family group in Commerce Cour
 
 A sculptural fountain-like installation referencing financial liquidity in Commerce Court North.
 
-## King Street Corridor
+### Four Seasons Centre façade sculptures
 
-### Megaptera
-
-- **ID:** TPAM-006
-- **Layer:** Layer 1 – Outdoor Sculptures
-- **Location:** King Street West Public Realm — York St & King St W, Toronto, ON
+- **ID:** TPAM-011
+- **Layer:** Layer 3 – Architectural Art
+- **Location:** Four Seasons Centre Plaza — 145 Queen St W, Toronto, ON
 - **Accessibility:** 24/7
-- **Artist / attribution:** Susan Schelle
+- **Artist / attribution:** Diamond Schmitt Architects
 - **Verified:** no
 
-A whale-inspired sculptural form in the King Street public realm.
-
-### Legends Row
-
-- **ID:** TPAM-014
-- **Layer:** Layer 2 – Civic Statuary
-- **Location:** Maple Leaf Square (Scotiabank Arena – Gate 5 Plaza) — 40 Bay St, Toronto, ON M5J 2X2
-- **Accessibility:** 24/7
-- **Artist / attribution:** collective installation (Maple Leaf Sports & Entertainment commissioning)
-- **Verified:** no
-
-A wall of commemorative hockey figures at Scotiabank Arena.
-
-## Yonge Street Edge
-
-### Immigrant Family
-
-- **ID:** TPAM-007
-- **Layer:** Layer 1 – Outdoor Sculptures
-- **Location:** 18 Yonge St — Toronto, ON
-- **Accessibility:** 24/7
-- **Artist / attribution:** —
-- **Verified:** no
-
-## Brookfield / TD Courtyard Network
-
-### Hours of the Day
-
-- **ID:** TPAM-009
-- **Layer:** Layer 1 – Outdoor Sculptures
-- **Location:** Brookfield Place Courtyard — 145 Wellington St W, Toronto, ON
-- **Accessibility:** 24/7
-- **Artist / attribution:** Michael Snow
-- **Verified:** no
-
-A multi-figure sculptural installation in Brookfield Place referencing temporal cycles.
+Integrated architectural ornamentation on the opera house façade.
 
 ### Canada’s Team of the Century Monument
 
@@ -165,3 +135,27 @@ A commemorative sports monument celebrating Canadian hockey heritage.
 - **Verified:** no
 
 A sports-themed sculptural installation in Brookfield Place courtyard.
+
+## King Street
+
+### Megaptera
+
+- **ID:** TPAM-006
+- **Layer:** Layer 1 – Outdoor Sculptures
+- **Location:** King Street West Public Realm — York St & King St W, Toronto, ON
+- **Accessibility:** 24/7
+- **Artist / attribution:** Susan Schelle
+- **Verified:** no
+
+A whale-inspired sculptural form in the King Street public realm.
+
+### Legends Row
+
+- **ID:** TPAM-014
+- **Layer:** Layer 2 – Civic Statuary
+- **Location:** Maple Leaf Square (Scotiabank Arena – Gate 5 Plaza) — 40 Bay St, Toronto, ON M5J 2X2
+- **Accessibility:** 24/7
+- **Artist / attribution:** collective installation (Maple Leaf Sports & Entertainment commissioning)
+- **Verified:** no
+
+A wall of commemorative hockey figures at Scotiabank Arena.
