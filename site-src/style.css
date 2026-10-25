@@ -10,7 +10,6 @@ header.site { position: relative; z-index: 2000; padding: 10px 12px; background:
 .navbar { display: flex; align-items: center; gap: 18px; padding: 8px 18px; border-radius: 16px; background: rgba(0,0,0,.18); }
 .brand { margin-right: auto; min-width: 0; }
 .brand h1 { margin: 0; font-size: 18px; line-height: 1.25; font-weight: 700; color: var(--cream); }
-#sub { margin: 0; font-size: 12px; color: rgba(255,252,242,.85); }
 .nav-links { display: flex; align-items: center; gap: 20px; font-size: 14px; }
 .nav-links a { color: rgba(255,252,242,.92); text-decoration: none; }
 .nav-links a:hover { color: #fff; text-decoration: underline; }
@@ -68,7 +67,7 @@ main { position: relative; overflow: hidden; flex: 1; min-height: 0; }
 @media (max-width: 760px) {
   html, body { height: 100%; }
   body { height: 100vh; height: 100dvh; }
-  #sub, #deskNotice { display: none; }
+  #deskNotice { display: none; }
   header.site { padding: 8px 10px; }
   .navbar { padding: 6px 8px 6px 14px; gap: 8px; }
   .brand h1 { font-size: 16px; }

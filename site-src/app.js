@@ -27,7 +27,6 @@
     var color = {}; zones.forEach(function (z) { color[z.zone] = z.color; });
     var short = {}; zones.forEach(function (z) { short[z.zone] = z.short; });
     var located = works.filter(function (w) { return w.lat != null && w.lng != null; });
-    $("sub").textContent = works.length + " outdoor works in " + zones.length + " downtown zones, by foot or bike.";
 
     var map = L.map("map", { zoomSnap: 0.25, attributionControl: true });
     map.attributionControl.setPrefix(false);
