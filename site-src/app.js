@@ -108,20 +108,27 @@
     }
 
     // filter chips (one set of controls)
-    var bar = $("filters");
+    var bar = $("zonelist");
     function chip(label, zone, col) {
       var b = mk("button"); b.type = "button";
       if (col) { var d = mk("span", "dot"); d.style.background = col; b.appendChild(d); }
       var n = zone ? works.filter(function (w) { return w.zone === zone; }).length : works.length;
       b.appendChild(document.createTextNode(label + " (" + n + ")"));
-      b.addEventListener("click", function () { setFilter(zone); });
+      b.addEventListener("click", function () { setFilter(zone); closePane(); });
       b.dataset.zone = zone || ""; bar.appendChild(b); return b;
     }
-    chip("All", null);
+    var pane = $("pane"), fbtn = $("filterBtn");
+    function openPane() { pane.classList.add("open"); fbtn.setAttribute("aria-expanded", "true"); }
+    function closePane() { pane.classList.remove("open"); fbtn.setAttribute("aria-expanded", "false"); fbtn.focus(); }
+    fbtn.addEventListener("click", function () { pane.classList.contains("open") ? closePane() : openPane(); });
+    $("paneClose").addEventListener("click", closePane);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pane.classList.contains("open")) closePane(); });
+    chip("All zones", null);
     zones.forEach(function (z) { chip(z.short, z.zone, z.color); });
 
     function setFilter(zone) {
       filter = zone;
+      $("active").textContent = zone ? (short[zone] + " (" + works.filter(function (w) { return w.zone === zone; }).length + ")") : "All zones";
       Array.prototype.forEach.call(bar.children, function (b) { b.setAttribute("aria-pressed", String((b.dataset.zone || null) === zone)); });
       Object.keys(items).forEach(function (id) { items[id].li.hidden = !!zone && items[id].w.zone !== zone; });
       var pts = [];

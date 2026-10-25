@@ -21,8 +21,15 @@
   </nav>
 </header>
 <p id="notice" role="note">Work in progress: if you see errors or want to update details please send feedback.</p>
-<div id="filters" role="group" aria-label="Show works in"></div>
+<div id="toolbar">
+  <button id="filterBtn" type="button" aria-expanded="false" aria-controls="pane">Filter by zone</button>
+  <span id="active">All zones</span>
+</div>
 <main>
+  <aside id="pane" aria-label="Filter by zone">
+    <div class="panehead"><h2>Show works in</h2><button id="paneClose" type="button" aria-label="Close filter">&times;</button></div>
+    <div id="zonelist"></div>
+  </aside>
   <div id="mapbox"><div id="map"></div><p id="tilemsg" hidden>The base map could not be loaded. Pins and the list still work.</p></div>
   <aside id="list" aria-label="Works"><ul id="works"></ul></aside>
 </main>
