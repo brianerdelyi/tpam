@@ -11,9 +11,20 @@ A structured inventory of outdoor, publicly accessible (on foot or by bike) art,
 | `data/artworks.csv` | **Master dataset.** The single source of truth. |
 | `catalogue/` | Browsable pages by zone, **generated** from the CSV. Don't edit by hand. |
 | `scripts/build_catalogue.py` | Rebuilds `catalogue/` from the CSV. |
+| `scripts/build_site.py`, `site-src/` | Build the website. |
+| `data/zones.json` | Zone corner coordinates. |
+| `maps/` | Zone maps (SVG, PNG, KML, interactive HTML). |
 | `archive/` | Original working notes, kept for provenance. |
 
 Rebuild the catalogue after editing the CSV: `python3 scripts/build_catalogue.py`
+
+## Website
+
+`site-src/` holds the hand-written page (map, filters, list). `scripts/build_site.py` combines it with `data/artworks.csv` and `data/zones.json` into `site/` (not committed). A GitHub Action (`.github/workflows/publish.yml`) rebuilds `site/` whenever `main` changes and publishes it to the `gh-pages` branch, which GitHub Pages serves. Never edit `gh-pages` by hand.
+
+Preview locally: `python3 scripts/build_site.py && cd site && python3 -m http.server 8000`, then open http://localhost:8000 (the map tiles need a web server, so don't open the file directly).
+
+Zone shapes are the corner points in `data/zones.json`. Works appear as markers on the map once their `lat` and `lng` are filled in `data/artworks.csv`.
 
 ## Zones
 

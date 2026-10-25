@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toronto Public Art Map</title>
+<meta name="description" content="Outdoor public art, civic statuary and architectural art in downtown Toronto, reachable on foot or by bike.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>Toronto Public Art Map</h1>
+    <p id="sub">Outdoor public art in downtown Toronto, by foot or bike.</p>
+  </div>
+  <nav>
+    <a href="https://github.com/brianerdelyi/tpam" rel="noopener">Source &amp; data</a>
+    <a href="https://github.com/brianerdelyi/tpam/issues/new?template=correction.md" rel="noopener">Report a correction</a>
+  </nav>
+</header>
+<p id="notice" role="note">Work in progress: locations are still being added and credits are being verified. Entries marked <b>Unverified</b> have not been checked against a source.</p>
+<main>
+  <aside id="side" aria-label="Artworks">
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search name, artist, place" aria-label="Search">
+      <div class="selects">
+        <select id="zone" aria-label="Zone"></select>
+        <select id="subzone" aria-label="Sub-zone"></select>
+        <select id="layer" aria-label="Layer"></select>
+      </div>
+      <p id="count" aria-live="polite"></p>
+    </div>
+    <ol id="list"></ol>
+  </aside>
+  <div id="map" role="application" aria-label="Map of zones and artworks"></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

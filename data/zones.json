@@ -1,0 +1,32 @@
+{
+  "note": "Approximate zone corners (lat, lng). Edit a point and rebuild; every zone that shares it moves with it.",
+  "points": {
+    "F_Bt": [43.6424, -79.4021],
+    "F_U":  [43.6454, -79.3842],
+    "F_Y":  [43.6471, -79.3765],
+    "F_Br": [43.6536, -79.3476],
+    "Q_U":  [43.6508, -79.3865],
+    "Q_Y":  [43.6524, -79.3790],
+    "Q_J":  [43.6540, -79.3722],
+    "B_Bt": [43.6665, -79.4115],
+    "B_U":  [43.6676, -79.3938],
+    "B_J":  [43.6725, -79.3789],
+    "B_Br": [43.6771, -79.3586],
+    "L_Bt": [43.6381, -79.4005],
+    "L_Y":  [43.6408, -79.3740],
+    "L_Br": [43.6470, -79.3470]
+  },
+  "zones": [
+    {"zone": "Downtown - South & Waterfront", "short": "South & Waterfront", "color": "#2b7bb9", "points": ["F_Bt","F_U","F_Y","F_Br","L_Br","L_Y","L_Bt"],
+     "description": "South of Front St, Bathurst St to Broadview Ave."},
+    {"zone": "Downtown - West", "short": "West", "color": "#2f9457", "points": ["F_Bt","F_U","Q_U","B_U","B_Bt"],
+     "description": "University Ave to Bathurst St, Front St to Bloor St."},
+    {"zone": "Downtown - Business Core", "short": "Business Core", "color": "#c98a00", "points": ["F_U","F_Y","Q_Y","Q_U"],
+     "description": "Front St to Queen St, Yonge to University."},
+    {"zone": "Downtown - Midtown", "short": "Midtown", "color": "#7a56b0", "points": ["Q_U","Q_Y","Q_J","B_J","B_U"],
+     "description": "Queen St to Bloor St, University Ave to Jarvis St. The Bloor Corridor extends beyond these limits."},
+    {"zone": "Downtown - East", "short": "East", "color": "#c4503f", "points": ["F_Y","F_Br","B_Br","B_J","Q_J","Q_Y"],
+     "description": "Yonge St to Broadview Ave, north to Bloor St, outside the Midtown area."}
+  ],
+  "corridor": {"label": "Bloor Corridor (flexible extent)", "color": "#7a56b0", "from": ["B_U","B_Bt"], "through": ["B_U","B_J"], "east_offset": [0.0011, 0.0048]}
+}
