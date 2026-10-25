@@ -61,6 +61,21 @@
       markers[w.id] = m;
     });
 
+    var lb = null;
+    function closePhoto() { if (lb) { lb.remove(); lb = null; } }
+    function openPhoto(w) {
+      closePhoto();
+      lb = mk("div", "lightbox");
+      lb.setAttribute("role", "dialog"); lb.setAttribute("aria-label", w.name + " photo");
+      var big = document.createElement("img"); big.src = w.image_url; big.alt = w.name; big.referrerPolicy = "no-referrer";
+      var cap = mk("p", "lbcap", w.name + " · Photo: City of Toronto");
+      var x = mk("button", "lbclose", "Close"); x.type = "button";
+      lb.appendChild(big); lb.appendChild(cap); lb.appendChild(x);
+      lb.addEventListener("click", closePhoto);
+      document.body.appendChild(lb); x.focus();
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePhoto(); });
+
     function dirs(w) { return "https://www.google.com/maps/dir/?api=1&destination=" + w.lat + "," + w.lng; }
     function popup(w) {
       var d = mk("div", "pop");
@@ -70,6 +85,7 @@
         var ph = mk("div", "photo"), im = document.createElement("img");
         im.src = w.image_url; im.alt = w.name; im.loading = "lazy"; im.referrerPolicy = "no-referrer";
         im.onerror = function () { ph.remove(); };
+        im.title = "Click to enlarge"; im.addEventListener("click", function () { openPhoto(w); });
         ph.appendChild(im);
         ph.appendChild(mk("span", "credit", "Photo: City of Toronto"));
         d.appendChild(ph);
