@@ -61,6 +61,11 @@
       markers[w.id] = m;
     });
 
+    // Photo credit: the City of Toronto for toronto.ca images, otherwise the image's host site.
+    function photoCredit(w) {
+      try { var h = new URL(w.image_url).hostname.replace(/^www\./, ""); return h.indexOf("toronto.ca") >= 0 ? "City of Toronto" : h; }
+      catch (e) { return "City of Toronto"; }
+    }
     var lb = null;
     function closePhoto() { if (lb) { lb.remove(); lb = null; } }
     function openPhoto(w) {
@@ -68,7 +73,7 @@
       lb = mk("div", "lightbox");
       lb.setAttribute("role", "dialog"); lb.setAttribute("aria-label", w.name + " photo");
       var big = document.createElement("img"); big.src = w.image_url; big.alt = w.name; big.referrerPolicy = "no-referrer";
-      var cap = mk("p", "lbcap", w.name + " · Photo: City of Toronto");
+      var cap = mk("p", "lbcap", w.name + " · Photo: " + photoCredit(w));
       var x = mk("button", "lbclose", "Close"); x.type = "button";
       lb.appendChild(big); lb.appendChild(cap); lb.appendChild(x);
       lb.addEventListener("click", closePhoto);
@@ -87,7 +92,7 @@
         im.onerror = function () { ph.remove(); };
         im.title = "Click to enlarge"; im.addEventListener("click", function () { openPhoto(w); });
         ph.appendChild(im);
-        ph.appendChild(mk("span", "credit", "Photo: City of Toronto"));
+        ph.appendChild(mk("span", "credit", "Photo: " + photoCredit(w)));
         d.appendChild(ph);
       }
       if (w.description) d.appendChild(mk("p", null, w.description));
