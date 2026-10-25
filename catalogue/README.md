@@ -9,5 +9,6 @@ Generated from `data/artworks.csv`. Do not edit these pages by hand; edit the CS
 | [Downtown - South & Waterfront](downtown-south-waterfront.md) | 10 |
 | [Downtown - East](downtown-east.md) | 22 |
 | [Downtown - West](downtown-west.md) | 21 |
+| [Outside the zones](outside-the-zones.md) | 1 |
 
-**Total: 96 works.**
+**Total: 97 works.**

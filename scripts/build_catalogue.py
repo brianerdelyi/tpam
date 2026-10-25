@@ -6,7 +6,7 @@ root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rows = list(csv.DictReader(open(os.path.join(root, "data", "artworks.csv"), encoding="utf-8")))
 slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 zones = OrderedDict()
-for r in rows: zones.setdefault(r["zone"], []).append(r)
+for r in rows: zones.setdefault(r["zone"] or "Outside the zones", []).append(r)  # works in no zone get their own page
 out = os.path.join(root, "catalogue"); os.makedirs(out, exist_ok=True)
 wanted = {"README.md"} | {slug(z) + ".md" for z in zones}
 for f in os.listdir(out):  # remove pages for zones that no longer exist
