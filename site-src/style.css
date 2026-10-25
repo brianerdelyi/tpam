@@ -25,7 +25,7 @@ a { color: var(--accent); }
 #zonelist button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 #zonelist .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
 @media (prefers-reduced-motion: reduce) { #pane, #pane.open { transition: none; } }
-main { position: relative; overflow: hidden; flex: 1; min-height: 0; display: grid; grid-template-columns: 340px 1fr; }
+main { position: relative; overflow: hidden; flex: 1; min-height: 0; display: grid; grid-template-columns: 360px 1fr; }
 #mapbox { position: relative; min-height: 0; }
 #map { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: #e8e8e4; }
 #tilemsg { position: absolute; z-index: 500; left: 8px; right: 8px; bottom: 28px; margin: 0; padding: 6px 10px; border-radius: 6px; font-size: 13px; background: var(--warn-bg); color: var(--warn-fg); }
@@ -47,6 +47,19 @@ main { position: relative; overflow: hidden; flex: 1; min-height: 0; display: gr
 .pop .small { font-size: 12px; margin: 0; }
 .leaflet-container { font: inherit; }
 #viewBtn { display: none; margin-left: auto; }
+#zonebar, #deskNotice { display: none; }
+@media (min-width: 761px) {
+  #toolbar, #pane, #notice { display: none; }
+  #list { display: flex; flex-direction: column; overflow: hidden; }
+  #zonebar { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  #zonebar button { display: flex; align-items: center; gap: 8px; text-align: left; font: inherit; font-size: 13px; line-height: 1.25; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--fg); cursor: pointer; }
+  #zonebar button:hover { background: color-mix(in srgb, var(--accent) 12%, var(--bg)); }
+  #zonebar button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  #zonebar button:first-child { grid-column: 1 / -1; }
+  #zonebar .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  #works { flex: 1; overflow-y: auto; min-height: 0; }
+  #deskNotice { display: block; margin: 0; padding: 6px 12px; font-size: 12px; background: var(--warn-bg); color: var(--warn-fg); border-top: 1px solid var(--line); }
+}
 @media (max-width: 760px) {
   html, body { height: 100%; }
   body { height: 100vh; height: 100dvh; }

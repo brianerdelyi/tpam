@@ -32,7 +32,11 @@
     <div id="zonelist"></div>
   </aside>
   <div id="mapbox"><div id="map"></div><p id="tilemsg" hidden>The base map could not be loaded. Pins and the list still work.</p></div>
-  <aside id="list" aria-label="Works"><ul id="works"></ul></aside>
+  <aside id="list" aria-label="Works">
+    <div id="zonebar" role="group" aria-label="Show works in"></div>
+    <ul id="works"></ul>
+    <p id="deskNotice" role="note">Work in progress: if you see errors or want to update details please send feedback.</p>
+  </aside>
 </main>
 <script src="leaflet.js"></script>
 <script src="app.js"></script>

@@ -92,12 +92,19 @@
       t.append(mk("span", "nm", w.name), mk("span", "wh", (short[w.zone] || "") + (w.sub_zone ? " · " + w.sub_zone : "")));
       b.append(dot, t); li.appendChild(b); ul.appendChild(li);
       b.addEventListener("click", function () { select(w.id, true); });
+      b.addEventListener("mouseenter", function () { hi(w.id, true); });
+      b.addEventListener("mouseleave", function () { hi(w.id, w.id === selected); });
       items[w.id] = { li: li, w: w };
     });
 
+    function hi(id, on) {
+      var m = markers[id]; if (!m) return;
+      m.setStyle({ radius: on ? 11 : 8, weight: on ? 3 : 2 });
+      if (on) m.bringToFront();
+    }
     function select(id, fromList) {
-      if (selected && items[selected]) items[selected].li.classList.remove("sel");
-      selected = id;
+      if (selected && items[selected]) { items[selected].li.classList.remove("sel"); hi(selected, false); }
+      selected = id; hi(id, true);
       var it = items[id]; if (!it) return;
       it.li.classList.add("sel");
       var m = markers[id];
@@ -129,17 +136,20 @@
 
     // filter chips (one set of controls)
     var bar = $("zonelist");
+    var deskbar = $("zonebar");
     function chip(label, zone, col) {
-      var b = mk("button"); b.type = "button";
-      if (col) { var d = mk("span", "dot"); d.style.background = col; b.appendChild(d); }
       var n = zone ? works.filter(function (w) { return w.zone === zone; }).length : works.length;
-      b.appendChild(document.createTextNode(label + " (" + n + ")"));
-      b.addEventListener("click", function () { setFilter(zone); closePane(); });
-      b.dataset.zone = zone || ""; bar.appendChild(b); return b;
+      [bar, deskbar].forEach(function (host) {
+        var b = mk("button"); b.type = "button";
+        if (col) { var d = mk("span", "dot"); d.style.background = col; b.appendChild(d); }
+        b.appendChild(document.createTextNode(label + " (" + n + ")"));
+        b.addEventListener("click", function () { setFilter(zone); closePane(); });
+        b.dataset.zone = zone || ""; host.appendChild(b);
+      });
     }
     var pane = $("pane"), fbtn = $("filterBtn");
     function openPane() { pane.classList.add("open"); fbtn.setAttribute("aria-expanded", "true"); }
-    function closePane() { pane.classList.remove("open"); fbtn.setAttribute("aria-expanded", "false"); fbtn.focus(); }
+    function closePane() { if (!pane.classList.contains("open")) return; pane.classList.remove("open"); fbtn.setAttribute("aria-expanded", "false"); fbtn.focus(); }
     fbtn.addEventListener("click", function () { pane.classList.contains("open") ? closePane() : openPane(); });
     $("paneClose").addEventListener("click", closePane);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pane.classList.contains("open")) closePane(); });
@@ -149,7 +159,7 @@
     function setFilter(zone) {
       filter = zone;
       $("active").textContent = zone ? (short[zone] + " (" + works.filter(function (w) { return w.zone === zone; }).length + ")") : "All zones";
-      Array.prototype.forEach.call(bar.children, function (b) { b.setAttribute("aria-pressed", String((b.dataset.zone || null) === zone)); });
+      Array.prototype.forEach.call(document.querySelectorAll("#zonelist button, #zonebar button"), function (b) { b.setAttribute("aria-pressed", String((b.dataset.zone || null) === zone)); });
       Object.keys(items).forEach(function (id) { items[id].li.hidden = !!zone && items[id].w.zone !== zone; });
       var pts = [];
       Object.keys(markers).forEach(function (id) {
