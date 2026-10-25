@@ -18,21 +18,16 @@
     <a href="https://github.com/brianerdelyi/tpam/issues/new?template=correction.md" rel="noopener">Report a correction</a>
   </nav>
 </header>
-<p id="notice" role="note">Work in progress: the map shows zone boundaries only, locations are still being added, and credits are being verified. Entries marked <b>Unverified</b> have not been checked against a source.</p>
+<p id="notice" role="note">Work in progress: credits have not yet been checked against sources.</p>
 <main>
-  <aside id="side" aria-label="Artworks">
-    <div class="filters">
-      <input id="q" type="search" placeholder="Search name, artist, place" aria-label="Search">
-      <div class="selects">
-        <select id="zone" aria-label="Zone"></select>
-        <select id="subzone" aria-label="Sub-zone"></select>
-        <select id="layer" aria-label="Layer"></select>
-      </div>
-      <p id="count" aria-live="polite"></p>
-    </div>
-    <ol id="list"></ol>
-  </aside>
-  <div id="map" aria-label="Map of the zones"></div>
+  <section id="mapwrap" aria-label="Map">
+    <div id="map"></div>
+    <p class="hint">Use the map's legend to show or hide groups, and tap a pin for details.</p>
+  </section>
+  <section id="catalogue" aria-label="The works">
+    <h2 id="cat-title">The works</h2>
+    <div id="zones"></div>
+  </section>
 </main>
 <script src="app.js"></script>
 </body>

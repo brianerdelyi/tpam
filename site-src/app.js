@@ -1,110 +1,86 @@
 (function () {
   "use strict";
   const REPO = "brianerdelyi/tpam";
+  const ORDER = ["Downtown - Business Core", "Downtown - Midtown", "Downtown - West", "Downtown - East", "Downtown - South & Waterfront"];
   const el = (id) => document.getElementById(id);
-  const norm = (s) => (s || "").toLowerCase();
+  const mk = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const layerName = (l) => (l || "").replace(/^Layer \d+\s*[–-]\s*/, "");
+  const known = (a) => a && !/^not consistently documented$/i.test(a.trim());
 
   Promise.all([
     fetch("artworks.json").then((r) => r.json()),
     fetch("zones.json").then((r) => r.json()),
     fetch("config.json").then((r) => r.json()).catch(() => ({}))
   ]).then(([works, zdata, cfg]) => init(works, zdata, cfg))
-    .catch((e) => { el("count").textContent = "Could not load the data: " + e.message; });
+    .catch((e) => { el("zones").textContent = "Could not load the data: " + e.message; });
 
   function init(works, zdata, cfg) {
-    // ---- map: embedded Google My Map ----
-    const mapEl = el("map");
+    // map: embedded Google My Map
     const url = cfg.my_maps_embed_url || "";
     if (/^https:\/\/www\.google\.com\/maps\/d\//.test(url)) {
-      const f = document.createElement("iframe");
-      f.src = url; f.title = "Map of the zones"; f.loading = "lazy"; f.allowFullscreen = true;
-      f.referrerPolicy = "no-referrer-when-downgrade";
-      mapEl.appendChild(f);
+      const f = mk("iframe"); f.src = url; f.title = "Map of the zones and artworks"; f.loading = "lazy"; f.allowFullscreen = true;
+      f.referrerPolicy = "no-referrer-when-downgrade"; el("map").appendChild(f);
     } else {
-      const p = document.createElement("p"); p.className = "nomap";
-      p.textContent = "The map is coming soon.";
-      mapEl.appendChild(p);
+      el("map").appendChild(mk("p", "nomap", "The map is coming soon."));
     }
 
-    const zoneByName = {};
-    zdata.zones.forEach((z) => (zoneByName[z.zone] = z));
+    const zoneInfo = {}; zdata.zones.forEach((z) => (zoneInfo[z.zone] = z));
+    el("sub").textContent = works.length + " outdoor works in 5 downtown zones, by foot or bike.";
+    el("cat-title").textContent = "The works (" + works.length + ")";
 
-    // ---- filters ----
-    const sel = { zone: el("zone"), sub: el("subzone"), layer: el("layer") };
-    const uniq = (arr) => Array.from(new Set(arr.filter(Boolean)));
-    const fill = (s, first, values) => {
-      const cur = s.value; s.innerHTML = "";
-      const o0 = document.createElement("option"); o0.value = ""; o0.textContent = first; s.appendChild(o0);
-      values.forEach((v) => { const o = document.createElement("option"); o.value = v; o.textContent = v.replace(/^Downtown - /, ""); s.appendChild(o); });
-      if (values.includes(cur)) s.value = cur;
-    };
-    fill(sel.zone, "All zones", zdata.zones.map((z) => z.zone));
-    fill(sel.layer, "All layers", uniq(works.map((w) => w.layer)).sort());
-    const refreshSubs = () => fill(sel.sub, "All sub-zones", uniq(works.filter((w) => !sel.zone.value || w.zone === sel.zone.value).map((w) => w.sub_zone)).sort());
-    refreshSubs();
-
-    const list = el("list");
     let openId = null;
-
-    function matches(w) {
-      if (sel.zone.value && w.zone !== sel.zone.value) return false;
-      if (sel.sub.value && w.sub_zone !== sel.sub.value) return false;
-      if (sel.layer.value && w.layer !== sel.layer.value) return false;
-      const q = norm(el("q").value).trim();
-      if (q && !norm([w.name, w.artist_attribution, w.location_context, w.address, w.sub_zone, w.description].join(" ")).includes(q)) return false;
-      return true;
-    }
+    const host = el("zones");
 
     function detail(w) {
-      const d = document.createElement("div"); d.className = "detail";
-      if (w.description) { const p = document.createElement("p"); p.textContent = w.description; d.appendChild(p); }
-      const dl = document.createElement("dl");
-      const row = (k, v) => { if (!v) return; const t = document.createElement("dt"), x = document.createElement("dd"); t.textContent = k; x.textContent = v; dl.append(t, x); };
-      row("Zone", w.zone); row("Sub-zone", w.sub_zone); row("Layer", w.layer);
-      row("Location", w.location_context); row("Address", w.address);
-      row("Artist", w.artist_attribution); row("Access", w.accessibility);
+      const d = mk("div", "detail");
+      if (w.description) d.appendChild(mk("p", null, w.description));
+      const dl = mk("dl");
+      const row = (k, v) => { if (v) { dl.append(mk("dt", null, k), mk("dd", null, v)); } };
+      row("Layer", layerName(w.layer));
+      row("Sub-zone", w.sub_zone);
+      row("Place", w.location_context);
+      row("Address", w.address && !/^toronto, on$/i.test(w.address) ? w.address : "");
+      row("Artist", known(w.artist_attribution) ? w.artist_attribution : "");
+      row("Credit check", w.verified ? "Verified" : "Not yet verified");
       d.appendChild(dl);
-      const foot = document.createElement("p"); foot.style.marginTop = "10px";
-      if (w.address) {
-        const g = document.createElement("a");
-        g.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(w.name + ", " + (w.address.includes("Toronto") ? w.address : w.location_context + ", Toronto, ON"));
-        g.textContent = "Open in Google Maps"; g.target = "_blank"; g.rel = "noopener";
-        foot.append(g, document.createTextNode(" · "));
-      }
-      if (w.source_url) { const a = document.createElement("a"); a.href = w.source_url; a.textContent = "Source"; a.rel = "noopener"; foot.append(a, document.createTextNode(" · ")); }
-      const c = document.createElement("a");
-      c.href = "https://github.com/" + REPO + "/issues/new?template=correction.md&title=" + encodeURIComponent("[Correction] " + w.id + " " + w.name);
-      c.textContent = "Report a correction"; c.rel = "noopener"; foot.appendChild(c);
-      d.appendChild(foot);
+      const foot = mk("p", "foot");
+      const q = w.name + ", " + (/toronto/i.test(w.address || "") && !/^toronto, on$/i.test(w.address) ? w.address : (w.location_context || "") + ", Toronto, ON");
+      const g = mk("a", null, "Open in Google Maps"); g.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q); g.target = "_blank"; g.rel = "noopener";
+      foot.append(g, document.createTextNode(" · "));
+      if (w.source_url) { const s = mk("a", null, "Source"); s.href = w.source_url; s.rel = "noopener"; foot.append(s, document.createTextNode(" · ")); }
+      const c = mk("a", null, "Report a correction");
+      c.href = "https://github.com/" + REPO + "/issues/new?template=correction.md&title=" + encodeURIComponent("[Correction] " + w.id + " " + w.name); c.rel = "noopener";
+      foot.appendChild(c); d.appendChild(foot);
       return d;
     }
 
     function render() {
-      const shown = works.filter(matches);
-      list.innerHTML = "";
-      shown.forEach((w) => {
-        const li = document.createElement("li"); li.className = "item" + (w.id === openId ? " open" : ""); li.dataset.id = w.id;
-        const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-expanded", w.id === openId ? "true" : "false");
-        const n = document.createElement("div"); n.className = "name"; n.textContent = w.name;
-        const meta = document.createElement("div"); meta.className = "meta";
-        const dot = document.createElement("span"); dot.className = "dot"; dot.style.background = (zoneByName[w.zone] || {}).color || "#888";
-        const t1 = document.createElement("span"); t1.textContent = ((zoneByName[w.zone] || {}).short || w.zone) + " · " + w.sub_zone;
-        const bd = document.createElement("span"); bd.className = "badge" + (w.verified ? " ok" : ""); bd.textContent = w.verified ? "Verified" : "Unverified";
-        meta.append(dot, t1, bd);
-        b.append(n, meta);
-        b.addEventListener("click", () => { openId = openId === w.id ? null : w.id; render(); });
-        li.appendChild(b);
-        if (w.id === openId) li.appendChild(detail(w));
-        list.appendChild(li);
+      const openZone = openId ? (works.find((w) => w.id === openId) || {}).zone : null;
+      const wasOpen = new Set(Array.from(host.querySelectorAll("details[open]")).map((d) => d.dataset.zone));
+      host.innerHTML = "";
+      ORDER.concat(zdata.zones.map((z) => z.zone).filter((z) => !ORDER.includes(z))).forEach((zn) => {
+        const list = works.filter((w) => w.zone === zn).sort((a, b) => a.sub_zone.localeCompare(b.sub_zone) || a.name.localeCompare(b.name));
+        if (!list.length) return;
+        const z = zoneInfo[zn] || {};
+        const d = mk("details", "zone"); d.dataset.zone = zn;
+        if (wasOpen.has(zn) || zn === openZone) d.open = true;
+        const s = mk("summary"); const dot = mk("span", "dot"); dot.style.background = z.color || "#888";
+        s.append(dot, document.createTextNode(zn.replace(/^Downtown - /, "")), mk("span", "n", list.length + " works"));
+        d.appendChild(s);
+        if (z.description) d.appendChild(mk("p", "zdesc", z.description));
+        const ul = mk("ul", "works");
+        list.forEach((w) => {
+          const li = mk("li", "work" + (w.id === openId ? " open" : ""));
+          const b = mk("button"); b.type = "button"; b.setAttribute("aria-expanded", w.id === openId ? "true" : "false");
+          b.append(mk("span", "name", w.name), mk("span", "where", w.sub_zone));
+          b.addEventListener("click", () => { openId = openId === w.id ? null : w.id; render(); });
+          li.appendChild(b);
+          if (w.id === openId) li.appendChild(detail(w));
+          ul.appendChild(li);
+        });
+        d.appendChild(ul); host.appendChild(d);
       });
-      el("count").textContent = shown.length + " of " + works.length + " works";
-      el("sub").textContent = works.length + " outdoor works in 5 downtown zones, by foot or bike.";
     }
-
-    sel.zone.addEventListener("change", () => { refreshSubs(); render(); });
-    sel.sub.addEventListener("change", render);
-    sel.layer.addEventListener("change", render);
-    el("q").addEventListener("input", render);
     render();
   }
 })();
