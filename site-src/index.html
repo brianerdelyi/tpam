@@ -5,21 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Toronto Public Art Map</title>
 <meta name="description" content="Outdoor public art, civic statuary and architectural art in downtown Toronto, reachable on foot or by bike.">
+<link rel="stylesheet" href="leaflet.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
   <div>
     <h1>Toronto Public Art Map</h1>
-    <p id="sub">Outdoor public art in downtown Toronto, by foot or bike. Tap a pin for details and walking or cycling directions.</p>
+    <p id="sub">Outdoor public art in downtown Toronto, by foot or bike.</p>
   </div>
   <nav>
     <a href="https://github.com/brianerdelyi/tpam" rel="noopener">Source &amp; data</a>
     <a href="https://github.com/brianerdelyi/tpam/issues/new?template=correction.md" rel="noopener">Report a correction</a>
   </nav>
 </header>
-<p id="notice" role="note">Work in progress: credits have not yet been checked against sources.</p>
-<div id="map"></div>
+<p id="notice" role="note">Work in progress: locations are approximate and credits have not yet been checked against sources.</p>
+<div id="filters" role="group" aria-label="Show works in"></div>
+<main>
+  <div id="mapbox"><div id="map"></div><p id="tilemsg" hidden>The base map could not be loaded. Pins and the list still work.</p></div>
+  <aside id="list" aria-label="Works"><ul id="works"></ul></aside>
+</main>
+<script src="leaflet.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
