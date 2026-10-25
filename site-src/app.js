@@ -66,6 +66,14 @@
       var d = mk("div", "pop");
       d.appendChild(mk("h3", null, w.name));
       d.appendChild(mk("p", "meta", [short[w.zone], layerName(w.layer)].filter(Boolean).join(" · ")));
+      if (w.image_url) {
+        var ph = mk("div", "photo"), im = document.createElement("img");
+        im.src = w.image_url; im.alt = w.name; im.loading = "lazy"; im.referrerPolicy = "no-referrer";
+        im.onerror = function () { ph.remove(); };
+        ph.appendChild(im);
+        ph.appendChild(mk("span", "credit", "Photo: City of Toronto"));
+        d.appendChild(ph);
+      }
       if (w.description) d.appendChild(mk("p", null, w.description));
       var bits = [];
       if (w.location_context) bits.push(w.location_context);

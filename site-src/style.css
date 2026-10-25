@@ -82,3 +82,7 @@ main { position: relative; overflow: hidden; flex: 1; min-height: 0; }
   #panelTab .chev { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { #list, #mapbox, #panelTab { transition: none !important; } }
+
+.pop .photo { position: relative; margin: 0 0 8px; height: 150px; background: #e8e6df; border-radius: 6px; overflow: hidden; }
+.pop .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pop .photo .credit { position: absolute; right: 4px; bottom: 4px; font-size: 10px; color: #fff; background: rgba(0,0,0,.55); padding: 1px 5px; border-radius: 3px; }
