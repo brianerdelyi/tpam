@@ -1,6 +1,6 @@
 # Downtown - South & Waterfront
 
-[← Catalogue](README.md) · 10 works
+[← Catalogue](README.md) · 24 works
 
 ## Ireland Park / Immigration Axis
 
@@ -132,3 +132,187 @@ Public artwork (stainless steel), 1997.
 - **Coordinates:** 43.64246, -79.3992
 
 Public artwork (bronze, masonry), 1906.
+
+## Lassonde Art Trail
+
+### Orange Functional
+
+- **ID:** TPAM-098
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Alexandre Arrechea
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A tree-shaped red steel sculpture with basketball hoops branching out from its trunk, inviting visitors to play and rethink conventional basketball.
+
+### Crown Act
+
+- **ID:** TPAM-099
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Oluseye
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A walkable, braided wooden labyrinth inspired by African diasporic histories, escape routes associated with the Underground Railroad, and braided hairstyles. A bronze cowrie shell sits at its centre.
+
+### Stories of relics
+
+- **ID:** TPAM-100
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Ryan Gander
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+Four sculptures depict historical timekeeping devices: an alarm clock, digital clock, sand timer and candle timer. Placed at four separate spots in the park, they invite reflection on time and history.
+
+### Homing
+
+- **ID:** TPAM-101
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Nadia Belerique & Tony Romano
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A metal assemblage of familiar domestic objects, tables and animal forms exploring home, belonging, shared meals, care and the ways people gather together.
+
+### Roman Standard
+
+- **ID:** TPAM-102
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Tracey Emin
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://lassondearttrail.org/art-trail/tracey-emin/ ; https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A small bronze songbird perched on a pole reinterprets the traditional Roman military standard, representing hope, faith and spirituality within the park's ecosystem.
+
+### Delicate Matter (for the birds)
+
+- **ID:** TPAM-103
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Kara Hamilton
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+Sculptural forms incorporating brass instrument bells and textured, earthy materials explore the relationship between found objects, sound and the natural world.
+
+### Trajet
+
+- **ID:** TPAM-104
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Caroline Monnet & Dean Baldwin Lew
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://lassondearttrail.org/art-trail/caroline-monnet/ ; https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A bronze artwork incorporating Indigenous footprints commemorates ancient human presence in the Lake Ontario region, drawing on footprints discovered in blue clay in 1908.
+
+### First Sun
+
+- **ID:** TPAM-105
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Monira Al Qadiri
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A towering, iridescent sculpture of a hybrid human-scarab figure inspired by Khepri, the ancient Egyptian deity associated with the rising sun and renewal.
+
+### against the wind, with the wind
+
+- **ID:** TPAM-106
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Alexa Kumiko Hatanaka
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+Colourful fish-shaped windsocks mounted on poles respond to the wind, connecting Japanese-inspired imagery, environmental change, resilience and the movement of air.
+
+### The Colony
+
+- **ID:** TPAM-107
+- **Layer:** Layer 1 – Outdoor Sculptures
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Kent Monkman
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://lassondearttrail.org/art-trail/kent-monkman/ ; https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+An oversized bronze beaver lodge surrounded by expressive beaver figures, examining Indigenous histories, colonial power struggles and the beaver's importance to Turtle Island's ecosystems.
+
+### Lodestar
+
+- **ID:** TPAM-108
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Lisa Hirmer
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A waterfront sculpture using words and the landscape to explore human relationships with the environment, collective responsibility and the challenges of climate change.
+
+### Saverio and Daisy (Navel)
+
+- **ID:** TPAM-109
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Hank Willis Thomas
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://lassondearttrail.org/art-trail/hank-willis-thomas/ ; https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A brightly coloured, speech-bubble-shaped steel bench that invites visitors to sit inside the sculpture and reflect on their own thoughts, speech and beliefs.
+
+### Ernest and Ruth (Exuberant Pink)
+
+- **ID:** TPAM-110
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Hank Willis Thomas
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A bold pink, speech-bubble-inspired bench that turns seating into interactive public art, framing views of the city and inviting reflection on communication and perspective.
+
+### Untitled (Juniper)
+
+- **ID:** TPAM-111
+- **Layer:** Layer 4 – Temporal / Rotating
+- **Location:** Biidaasige Park (Lassonde Art Trail) — 51 Commissioners St (park entrance), Toronto, ON
+- **Accessibility:** 
+- **Artist / attribution:** Virginia Overton
+- **Verified:** no
+- **Coordinates:** 43.6457, -79.3491
+- **Source:** https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/biidaasige-park/public-art-at-biidaasige-park/
+
+A minimalist sculpture made from repurposed industrial or architectural materials, drawing attention to material properties, form and the traces left by previous use.

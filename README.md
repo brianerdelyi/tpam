@@ -67,6 +67,7 @@ Where zones overlap, Midtown takes precedence: between Queen and Bloor, and betw
 | South & Waterfront | Exhibition Place Grounds | Large-scale civic event + memorial zone |
 | South & Waterfront | Jack Layton Ferry Terminal Zone | Transit + civic memorial node |
 | South & Waterfront | Blue Jays Way Civic Edge | Entertainment + stadium-adjacent civic art pocket |
+| South & Waterfront | Lassonde Art Trail | Contemporary permanent and rotating works in Biidaasige Park, Port Lands |
 | East | St. Lawrence Market District | Historic market + civic origin core |
 | East | King East / Old Town Core | Early Toronto street grid + heritage zone |
 | East | Corktown / Riverside Edge | Industrial + Don Valley edge zone |
