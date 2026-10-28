@@ -1,0 +1,200 @@
+(function () {
+  "use strict";
+  var navToggle = document.getElementById("navToggle"), navLinks = document.getElementById("navLinks");
+  navToggle.addEventListener("click", function (e) { var o = navLinks.classList.toggle("open"); navToggle.setAttribute("aria-expanded", String(o)); e.stopPropagation(); });
+  document.addEventListener("click", function (e) { if (!navLinks.contains(e.target)) { navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded", "false"); } });
+  var REPO = "brianerdelyi/tpam";
+  var $ = function (id) { return document.getElementById(id); };
+  function mk(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  var layerName = function (l) { return (l || "").replace(/^Layer \d+\s*[–-]\s*/, ""); };
+  var known = function (a) { return a && !/^not consistently documented$/i.test(a.trim()); };
+
+  Promise.all([
+    fetch("artworks.json").then(function (r) { return r.json(); }),
+    fetch("zones.json").then(function (r) { return r.json(); })
+  ]).then(function (d) { init(d[0], d[1]); })
+    .catch(function (e) { $("works").appendChild(mk("li", "empty", "Could not load the data: " + e.message)); });
+
+  var PROVIDERS = [
+    { url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png", opt: { maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' } },
+    { url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", opt: { maxZoom: 19,
+      attribution: "Tiles &copy; Esri" } }
+  ];
+
+  function init(works, zdata) {
+    var zones = zdata.zones;
+    var color = {}; zones.forEach(function (z) { color[z.zone] = z.color; });
+    var short = {}; zones.forEach(function (z) { short[z.zone] = z.short; });
+    var located = works.filter(function (w) { return w.lat != null && w.lng != null; });
+
+    var map = L.map("map", { zoomSnap: 0.25, attributionControl: true });
+    map.attributionControl.setPrefix(false);
+
+    // base map with automatic fallback between free, key-less providers
+    var pi = -1, base = null;
+    function nextProvider() {
+      pi++;
+      if (base) map.removeLayer(base);
+      if (pi >= PROVIDERS.length) { $("tilemsg").hidden = false; return; }
+      var p = PROVIDERS[pi], ok = 0, bad = 0;
+      base = L.tileLayer(p.url, p.opt);
+      base.on("tileload", function () { ok++; });
+      base.on("tileerror", function () { bad++; if (ok === 0 && bad >= 4) { base.off(); nextProvider(); } });
+      base.addTo(map);
+    }
+    nextProvider();
+
+    // zone outlines
+    var polys = {};
+    zones.forEach(function (z) {
+      polys[z.zone] = L.polygon(z.coords, { color: z.color, weight: 2, fillColor: z.color, fillOpacity: 0.08, interactive: false }).addTo(map);
+    });
+
+    // pins
+    var markers = {}, items = {}, selected = null, filter = null;
+    located.forEach(function (w) {
+      var c = color[w.zone] || "#333";
+      var m = L.circleMarker([w.lat, w.lng], { radius: 8, color: "#fff", weight: 2, fillColor: c, fillOpacity: 0.95 });
+      m.bindPopup(popup(w), { maxWidth: 280 });
+      m.on("click", function () { select(w.id, false); });
+      markers[w.id] = m;
+    });
+
+    // Photo credit: the City of Toronto for toronto.ca images, otherwise the image's host site.
+    function photoCredit(w) {
+      try { var h = new URL(w.image_url).hostname.replace(/^www\./, ""); return h.indexOf("toronto.ca") >= 0 ? "City of Toronto" : h; }
+      catch (e) { return "City of Toronto"; }
+    }
+    var lb = null;
+    function closePhoto() { if (lb) { lb.remove(); lb = null; } }
+    function openPhoto(w) {
+      closePhoto();
+      lb = mk("div", "lightbox");
+      lb.setAttribute("role", "dialog"); lb.setAttribute("aria-label", w.name + " photo");
+      var big = document.createElement("img"); big.src = w.image_url; big.alt = w.name; big.referrerPolicy = "no-referrer";
+      var cap = mk("p", "lbcap", w.name + " · Photo: " + photoCredit(w));
+      var x = mk("button", "lbclose", "Close"); x.type = "button";
+      lb.appendChild(big); lb.appendChild(cap); lb.appendChild(x);
+      lb.addEventListener("click", closePhoto);
+      document.body.appendChild(lb); x.focus();
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePhoto(); });
+
+    function dirs(w) { return "https://www.google.com/maps/dir/?api=1&destination=" + w.lat + "," + w.lng; }
+    function popup(w) {
+      var d = mk("div", "pop");
+      d.appendChild(mk("h3", null, w.name));
+      d.appendChild(mk("p", "meta", [short[w.zone], layerName(w.layer)].filter(Boolean).join(" · ")));
+      if (w.image_url) {
+        var ph = mk("div", "photo"), im = document.createElement("img");
+        im.src = w.image_url; im.alt = w.name; im.loading = "lazy"; im.referrerPolicy = "no-referrer";
+        im.onerror = function () { ph.remove(); };
+        im.title = "Click to enlarge"; im.addEventListener("click", function () { openPhoto(w); });
+        ph.appendChild(im);
+        ph.appendChild(mk("span", "credit", "Photo: " + photoCredit(w)));
+        d.appendChild(ph);
+      }
+      if (w.description) d.appendChild(mk("p", null, w.description));
+      var bits = [];
+      if (w.location_context) bits.push(w.location_context);
+      if (known(w.artist_attribution)) bits.push("Artist: " + w.artist_attribution);
+      bits.push(w.verified ? "Credit verified" : "Credit not yet verified");
+      d.appendChild(mk("p", "small", bits.join(" · ")));
+      var go = mk("p", "go");
+      var da = mk("a", null, "Get directions"); da.href = dirs(w); da.target = "_blank"; da.rel = "noopener"; go.appendChild(da);
+      d.appendChild(go);
+      var f = mk("p", "small");
+      var r = mk("a", null, "Report a correction");
+      r.href = "https://github.com/" + REPO + "/issues/new?template=correction.md&title=" + encodeURIComponent("[Correction] " + w.id + " " + w.name);
+      r.rel = "noopener"; r.target = "_blank"; f.appendChild(r);
+      if (w.source_url) { f.appendChild(document.createTextNode(" · ")); var s = mk("a", null, "Source"); s.href = w.source_url; s.target = "_blank"; s.rel = "noopener"; f.appendChild(s); }
+      d.appendChild(f);
+      return d;
+    }
+
+    // list
+    var ul = $("works");
+    works.slice().sort(function (a, b) {
+      return zones.findIndex(function (z) { return z.zone === a.zone; }) - zones.findIndex(function (z) { return z.zone === b.zone; }) || a.name.localeCompare(b.name);
+    }).forEach(function (w) {
+      var li = mk("li"), b = mk("button"), dot = mk("span", "dot"), t = mk("span");
+      dot.style.background = color[w.zone] || "#333";
+      t.append(mk("span", "nm", w.name), mk("span", "wh", (short[w.zone] || "") + (w.sub_zone ? " · " + w.sub_zone : "")));
+      b.append(dot, t); li.appendChild(b); ul.appendChild(li);
+      b.addEventListener("click", function () { select(w.id, true); });
+      b.addEventListener("mouseenter", function () { hi(w.id, true); });
+      b.addEventListener("mouseleave", function () { hi(w.id, w.id === selected); });
+      items[w.id] = { li: li, w: w };
+    });
+
+    function hi(id, on) {
+      var m = markers[id]; if (!m) return;
+      m.setStyle({ radius: on ? 11 : 8, weight: on ? 3 : 2 });
+      if (on) m.bringToFront();
+    }
+    function select(id, fromList) {
+      if (selected && items[selected]) { items[selected].li.classList.remove("sel"); hi(selected, false); }
+      selected = id; hi(id, true);
+      var it = items[id]; if (!it) return;
+      it.li.classList.add("sel");
+      var m = markers[id];
+      if (m) {
+        if (fromList) {
+          if (isPhone()) { setPanel(false); }
+          map.setView(m.getLatLng(), Math.max(map.getZoom(), 16)); m.openPopup();
+        }
+      } else if (fromList) { /* no coordinates yet */ }
+      if (!fromList) it.li.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+
+    // one panel (filter + list) that slides in and out; open by default on desktop, closed on phones
+    var phoneQuery = window.matchMedia("(max-width: 760px)");
+    function isPhone() { return phoneQuery.matches; }
+    var ptab = $("panelTab"), chev = ptab.querySelector(".chev");
+    function setPanel(open) {
+      document.body.classList.toggle("panel-hidden", !open);
+      ptab.setAttribute("aria-expanded", String(open));
+      var label = open ? "Hide panel" : (isPhone() ? "Show works and filter" : "Show panel");
+      ptab.setAttribute("aria-label", label); ptab.title = label;
+      chev.textContent = open ? "\u2039" : "\u203A";
+      setTimeout(function () { map.invalidateSize(); }, 300);
+    }
+    ptab.addEventListener("click", function () { setPanel(document.body.classList.contains("panel-hidden")); });
+    $("panelClose").addEventListener("click", function () { setPanel(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && isPhone() && !document.body.classList.contains("panel-hidden")) setPanel(false); });
+    setPanel(!isPhone());
+
+    // zone buttons (the only filter)
+    var bar = $("zonebar");
+    function chip(label, zone, col) {
+      var n = zone ? works.filter(function (w) { return w.zone === zone; }).length : works.length;
+      var b = mk("button"); b.type = "button";
+      if (col) { var d = mk("span", "dot"); d.style.background = col; b.appendChild(d); }
+      b.appendChild(document.createTextNode(label + " (" + n + ")"));
+      b.addEventListener("click", function () { setFilter(zone); if (isPhone()) setPanel(false); });
+      b.dataset.zone = zone || ""; bar.appendChild(b);
+    }
+    chip("All zones", null);
+    zones.forEach(function (z) { chip(z.short, z.zone, z.color); });
+
+    function setFilter(zone) {
+      filter = zone;
+      Array.prototype.forEach.call(document.querySelectorAll("#zonebar button"), function (b) { b.setAttribute("aria-pressed", String((b.dataset.zone || null) === zone)); });
+      Object.keys(items).forEach(function (id) { items[id].li.hidden = !!zone && items[id].w.zone !== zone; });
+      var pts = [];
+      Object.keys(markers).forEach(function (id) {
+        var show = !zone || items[id].w.zone === zone;
+        if (show) { markers[id].addTo(map); pts.push(markers[id].getLatLng()); } else { map.removeLayer(markers[id]); }
+      });
+      zones.forEach(function (z) { polys[z.zone].setStyle({ weight: !zone || z.zone === zone ? 2 : 1, opacity: !zone || z.zone === zone ? 1 : 0.35, fillOpacity: !zone ? 0.08 : (z.zone === zone ? 0.14 : 0.02) }); });
+      if (zone) map.fitBounds(polys[zone].getBounds().pad(0.1)); else map.fitBounds(allBounds());
+    }
+    function allBounds() {
+      var b = L.latLngBounds([]); zones.forEach(function (z) { b.extend(polys[z.zone].getBounds()); }); return b.pad(0.04);
+    }
+    setFilter(null);
+    window.addEventListener("resize", function () { map.invalidateSize(); });
+    setTimeout(function () { map.invalidateSize(); setFilter(filter); }, 200);
+  }
+})();

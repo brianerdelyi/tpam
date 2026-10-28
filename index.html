@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toronto Public Art Map</title>
+<meta name="description" content="Outdoor public art, civic statuary and architectural art in downtown Toronto, reachable on foot or by bike.">
+<link rel="stylesheet" href="leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <nav class="navbar" aria-label="Site">
+    <div class="brand">
+      <h1>Toronto Public Art Map</h1>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="https://github.com/brianerdelyi/tpam" rel="noopener">Source &amp; data</a>
+      <a href="https://github.com/brianerdelyi/tpam/issues/new?template=correction.md" rel="noopener">Report a correction</a>
+      <a href="mailto:tpam@cyclingmatters.ca?subject=Toronto%20Public%20Art%20Map%20feedback">Email feedback</a>
+      <a class="mobile-only" href="https://cyclingmatters.ca" rel="noopener">Cycling Matters</a>
+    </div>
+    <a class="nav-cta" href="https://cyclingmatters.ca" rel="noopener">Cycling Matters</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<main>
+  <div id="mapbox">
+    <div id="map"></div>
+    <p id="tilemsg" hidden>The base map could not be loaded. Pins and the list still work.</p>
+  </div>
+  <button id="panelTab" type="button" aria-controls="list" aria-expanded="true" aria-label="Hide panel" title="Hide panel"><span class="chev" aria-hidden="true">&#8249;</span><span class="lbl">Works &amp; filter</span></button>
+  <aside id="list" aria-label="Works and filter">
+    <div class="panehead"><h2>Works &amp; filter</h2><button id="panelClose" type="button" aria-label="Close panel">&times;</button></div>
+    <div id="zonebar" role="group" aria-label="Show works in"></div>
+    <ul id="works"></ul>
+  </aside>
+</main>
+<script src="leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
